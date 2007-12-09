@@ -1,0 +1,4 @@
+#define xball_l_width 4
+#define xball_l_height 7
+static char xball_l_bits[] = {
+   0x06, 0x04, 0x04, 0x04, 0x04, 0x04, 0x0e};

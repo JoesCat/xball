@@ -1,0 +1,86 @@
+.TH XBALL 6x "1/5/93" " "
+.SH NAME
+xball \- bounce balls on the screen
+.SH SYNOPSIS
+.B xball
+[ -help -delay
+.I delay
+-gravity
+.I percent-gravity
+-elasticity
+.I percent-elasticity
+-itemWidth
+.I ball-width
+-itemHeight
+.I ball-height
+-collide -perpetual -haltSim -demoFile
+.I demo-file
+-rgbTxt
+.I rgb.txt-file
+]
+[XToolkit options]
+.sp
+.SH DESCRIPTION
+.PP
+.I XBall
+allows the user to create 3-d shaded balls, or to write and
+run demo which create and manipulate the balls in various ways.
+Documentation is included on-line via the Help menu and is not
+reproduced here.
+.SH OPTIONS
+Run xball -help for a decription of the command line options
+.SH DEMOS
+Several demo files are included with the distribution.  To run all the
+demos, run 'run_demos'.
+.SH RESOURCES
+Most resources are avaliable for user modification.  See the XBall
+app-defaults file for a complete listing of widgets,
+.sp
+Following is a list of the most useful resources:
+.RS
+.TP 3
+\fBXBall*canvas.width, height\fR
+The default width and height of the window in which balls bounce in.
+.TP 3
+\fBXBall.delay\fR
+The amount to slow the simulation, in case the computer is too fast.
+A reasonable range is 0 to 200.
+.TP 3
+\fBXBall.itemWidth, itemHeight\fR
+The default width and height of the balls.
+.TP 3
+\fBXBall.collide\fR
+If true, balls are colliding on startup.
+.TP 3
+\fBXBall.perpetual\fR
+If true, balls are perpetual on startup.
+.TP 3
+\fBXBall.haltSim\fR
+If true, simulation is halted on startup.
+.TP 3
+\fBXBall.demoFile\fR
+Specified the file to run as a demo on startup.
+.TP 3
+\fBXBall.rgbTxt\fR
+Specified the file to load for the colors.  The default file is
+/etc/X11/rgb.txt
+.SH FILES
+.TP
+/etc/X11/rgb.txt X11 color names and values.
+.sp
+.SH AUTHOR
+.PP
+David Nedde (daven@ivy.wpi.edu).
+.br
+Packaged for the Debian project
+by Stephen Birch <sgbirch@imsmail.org>.
+.sp
+.SH COPYRIGHT
+Copyright 1991, 1993 David Nedde.
+.br
+Permission to use, copy, modify, and distribute this
+software and its documentation for any purpose and without
+fee provided that the above copyright notice appears in all copies.
+It is provided "as is" without express or implied warranty.
+
+

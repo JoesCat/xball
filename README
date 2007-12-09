@@ -1,0 +1,58 @@
+  This program simulates bouncing balls in a window.  You create the
+balls in a variety of ways, and can set the gravity, elasticity,
+whether balls collide or not, etc.
+
+  Since the last version, I have added Motif support, 3-d shaded
+balls, and a demo running facility.
+
+  Software features user-configurable menus, and a DrawingArea widget
+for use with other Athena widgets.
+
+  XBall compiles using either Motif or Athena Widgets (See the
+Imakefile to select the one you want).  It been compiled and run on a
+Sun Sparc, IBM RS6000, SGI Iris and DecStation 5000, using their
+standard C compiler.  The Athena version works using X11R4 or X11R5.
+
+  To compile, run xmkmf (and Make Makefiles if Athena widgets used).
+Then make.  A standard Make.motif and Make.athena have been provided
+if you do not have xmkmf.  If you have undefined symbols, such as
+usleep or regex, see the Imakefile for symbols to define, xmkmf,
+remove the *.o files, and recompile.
+
+  All resources are contained within the program as fallback
+resources, so, it is not strictly neccessary to install the
+app-defaults file, except that when using Athena widgets, since the
+keyboard accelertors will not work if the app-defauls file is not
+installed.
+
+  To run the included demos, type 'run_demos'.
+
+  Here are the recommended values for the delay to slow down balls.
+This delay can be set in the Imakefile, or when run as xball -delay 1000.
+  Sun Sparc         100
+  IBM RS6000      10000
+  SGI Iris          100  (Uncomment MYLDLIBS in Imakefile if using Motif)
+  DecStation 5000   180  (Comment out HAVE_USLEEP in Imakefile)
+
+
+  Please send bugs, comments, suggestions, and interesting demos to:
+daven@ivy.wpi.edu.
+
+
+Copying Policy:
+   Copyright 1993 David Nedde
+   Permission to use, copy, modify, and distribute this software
+   and its documentation for any purpose and without fee is granted
+   provided that the above copyright notice appears in all copies.
+   It is provided "as is" without express or implied warranty.
+
+Two files have additional copying policies:
+  act_area.c:
+    Written by Dan Heller.  Copyright 1991, O'Reilly && Associates.
+    This program is freely distributable without licensing fees and
+    is provided without guarantee or warrantee expressed or implied.
+    This program is -not- in the public domain.
+  filemenu.c
+    Copyright 1989 The University of Texas at Austin
+    Copyright 1990 Microelectronics and Computer Technology Corporation
+    Author:  	Po Cheung

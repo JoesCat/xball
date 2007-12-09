@@ -1,0 +1,127 @@
+DrawingArea Widget
+
+
+SYNOPSIS
+  Application header file	<X11/Xaw_d/DrawingA.h>
+  Class header file		<X11/Xaw_d/DrawingAP.h>
+  Class				drawingAreaWidgetClass
+  Class Name			DrawingArea
+  Superclass			Simple
+
+
+OVERVIEW
+  This widget was needed to allow a drawing area in the Athena widget
+  set that doesn't require hacking up the Label widget by adding
+  complicated actions.  This widget follows Motif's DrawingArea widget
+  closely, except that it follows Athena's naming conventions and there
+  is no resize policy.  Also, Motif's Drawing area is a composite widget,
+  while this one is a simple widget.  This widget is NOT officially
+  part of the Athena widget set.
+
+
+DESCRIPTION
+  The DrawingArea widget is modeled after Motif's DrawingArea widget.
+  The DrawingArea widget is an empty widget that is easily adaptable to
+  a variety of purposes.  It does no drawing and defines no behavior
+  except for invoking callbacks.  Callbacks notify the application when
+  graphics need to be drawn (exposure events or widget resize) and when
+  the widget receives input from the keyboard or mouse.  Applications
+  are responsible for defining appearence and behavior as needed in
+  response to DrawingArea callbacks.
+
+
+Classes
+  DrawingArea inherits behavior and resources from the Core and Simple
+  classes.
+  The class pointer is DrawingAreaWidgetClass.  The class name is DrawingArea.
+
+
+New Resources
+   Name		     	Class		RepType		Default Value
+   ----		     	-----		-------		-------------
+   exposeCallback	Callback	Pointer		NULL
+   inputCallback	Callback	Pointer		NULL
+   motionCallback	Callback	Pointer		NULL
+   resizeCallback	Callback	Pointer		NULL
+
+   XtNexposeCallback
+     Specifies list of callbacks that is called when DrawingArea recieves
+     an exposure event.  The callback reason is XawCR_EXPOSE.
+   XtNinputCallback
+     Specifies list of callbacks that is called when DrawingArea recieves
+     an keyboard or mouse event (key or button, up or down).  The callback 
+     reason is XawCR_INPUT.
+   XtNmotionCallback   
+     Specifies list of callbacks that is called when DrawingArea recieves
+     a mouse motion event.  The callback reason is XawCR_MOTION.
+   XtNresizeCallback
+     Specifies list of callbacks that is called when the DrawingArea is
+     resized.  The callback reason is XawCR_RESIZE.
+
+
+Inherited Resources, Changed defaults
+   Name		     	Class		RepType		Default Value
+   ----		     	-----		-------		-------------
+   height		Height		Dimension	100
+   width		Width		Dimension	100
+
+
+Callback Information
+  A pointer to the following structure is returned with each callback.
+
+  typedef struct {
+    int	    reason;
+    XEvent *event;
+    Window  window;
+  } XawDrawingAreaCallbackStruct;
+
+  reason: Indicates why the callback was invoked
+  event:  Points to the XEvent that triggered the callback
+  window: Is set to the widget window
+
+
+Behavior
+ <KeyDown>,<KeyUp>,<BtnDown>,<BtnUp>:
+   The callbacks for XtNinputCallback are called when a key or button is 
+   pressed or released.
+ <Expose>:
+   The callbacks for XtNexposeCallbacks are called when the widget recieves
+   an exposure event.
+ <Configure>:
+   The callbacks for XtNresizeCallbacks are called when the widget is resized.
+ <Motion>:
+   The callbacks for XtNmotionCallbacks are called when the widget recieves a 
+   pointer motion event.
+
+
+Default Translations
+  <BtnDown>:	input()
+  <BtnUp>:	input()
+  <KeyDown>:	input()
+  <KeyUp>:	input()
+  <Motion>:	motion()
+  <ResReq>:	resize()
+
+
+SEE ALSO
+  OSF/Motif Programmer's reference: XmDrawingArea
+    Open Software Foundation
+  Athena Widget Set - C Language Interface Rel 4: 3.6 Simple Widget
+    Chris D. Peterson
+  X Toolkit Intrinsics - C Language Interface
+    Joel McCormack, Paul Asenta, Ralph R. Swick
+  The X Window System, programming and Applications with Xt, OSF/Motif Edition
+    Douglas A. Young
+
+
+COPYRIGHT
+  Copyright 1990, David Nedde
+ 
+  Permission to use, copy, modify, and distribute this
+  software and its documentation for any purpose and without
+  fee is provided that the above copyright notice appears in all copies.
+  It is provided "as is" without express or implied warranty.
+
+
+AUTHOR
+  David Nedde, daven@maxine.wpi.edu

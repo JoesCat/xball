@@ -1,0 +1,18 @@
+# Load bitmap with all balls having the same velocity
+# After they bounce down, have them fall through
+# once
+
+collide off
+load_bitmap xball.xbm 0,0
+set_velocity abs 3,-10
+gravity 10
+elasticity 85
+perpetual on
+
+iterate 700
+
+perpetual off
+gravity 20
+
+iterate 200 
+exit

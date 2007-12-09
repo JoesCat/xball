@@ -1,0 +1,36 @@
+/**/#
+/**/#   Imakefile for Xaw_d : Dave Nedde (daven@ivy.wpi.edu)
+/**/#
+
+       INCLUDES = -I../..
+      DEMO_SRCS = demo.c
+      DEMO_OBJS = demo.o
+LOCAL_LIBRARIES = -lXaw_d
+      LDOPTIONS = -L.
+         LDLIBS = -lXaw_d -lXaw -lXt -lXmu -lXext -lX11
+
+NormalLibraryTarget(Xaw_d,DrawingA.o)
+
+SRCS = $(DEMO_SRCS)
+OBJS = $(DEMO_OBJS)
+
+ComplexProgramTarget(demo)
+
+DIST = \
+        X11 \
+        X11/Xaw_d \
+        X11/Xaw_d/DrawingA.c \
+        X11/Xaw_d/DrawingA.h \
+        X11/Xaw_d/DrawingAP.h \
+        X11/Xaw_d/DrawingA.doc \
+        X11/Xaw_d/Imakefile \
+        X11/Xaw_d/Makefile.std \
+        X11/Xaw_d/patchlevel.h \
+        X11/Xaw_d/demo.c \
+        X11/Xaw_d/README
+
+shar:
+	( cd ../.. ; makekit -s75k -p $(DIST) ; mv Part* X11/Xaw_d )
+
+tar:
+	( cd ../.. ; tar cvf - $(DIST) | compress -v > X11/Xaw_d/xball.tar.Z )

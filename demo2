@@ -1,0 +1,28 @@
+# Put up xball bitmap with random balls not colliding in zero gravity
+# Turn on collide so bitmap image gets destroyed
+# turn on gravity
+
+collide off
+elasticity 100
+load_bitmap xball.xbm 0,0
+gravity 0
+create_random 30,15
+iterate 160
+
+elasticity 50
+collide on
+iterate 50
+
+gravity 40
+iterate 10
+
+gravity 50
+iterate 10
+
+gravity 60
+iterate 10
+
+gravity 70
+iterate 100
+
+exit

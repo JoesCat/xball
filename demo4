@@ -1,0 +1,25 @@
+# have random balls form xball
+
+visible off
+
+collide off
+elasticity 100
+gravity 0
+load_bitmap xball.xbm 0,0
+
+randomize -10,10,-10,10
+backwards 100
+
+visible on
+
+iterate 99
+
+set_velocity abs 0,0
+gravity 0
+sleep 1
+randomize -10,10,-13,7
+gravity 10
+elasticity 85
+iterate 300
+
+exit

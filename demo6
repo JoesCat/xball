@@ -1,0 +1,26 @@
+# Xball word collides with itself horizontally
+
+
+load_bitmap xball.xbm 0,0
+#load_bitmap /usr/include/X11/bitmaps/left_ptr 0,0
+
+collide off
+set_velocity abs 10,0
+gravity 0
+elasticity 100
+
+
+iterate 100
+
+collide on
+
+iterate 150
+
+elasticity 80
+gravity 30
+
+iterate 300
+
+exit
+
+

@@ -1,0 +1,74 @@
+collide on
+
+create 200,20,0,0
+iterate 40
+create 200,20,0,0
+iterate 80
+create 200,20,0,0
+iterate 40
+create 200,20,0,0
+iterate 40
+create 200,20,0,0
+iterate 20
+create 200,20,0,0
+iterate 20
+create 200,20,0,0
+iterate 10
+create 200,20,0,0
+iterate 10
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+iterate 5
+create 200,20,0,0
+
+iterate 50
+
+create 0,0,4,0
+
+iterate 400
+
+exit

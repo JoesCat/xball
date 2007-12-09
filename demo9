@@ -1,0 +1,106 @@
+collide off
+gravity 10
+elasticity 90
+window_width 400
+
+
+create 10,20,0,0
+iterate 3
+create 20,20,0,0
+iterate 3
+create 30,20,0,0
+iterate 3
+create 40,20,0,0
+iterate 3
+create 50,20,0,0
+iterate 3
+create 60,20,0,0
+iterate 3
+create 70,20,0,0
+iterate 3
+create 80,20,0,0
+iterate 3
+create 90,20,0,0
+iterate 3
+create 100,20,0,0
+iterate 3
+create 110,20,0,0
+iterate 3
+create 120,20,0,0
+iterate 3
+create 130,20,0,0
+iterate 3
+create 140,20,0,0
+iterate 3
+create 150,20,0,0
+iterate 3
+create 160,20,0,0
+iterate 3
+create 170,20,0,0
+iterate 3
+create 180,20,0,0
+iterate 3
+create 190,20,0,0
+iterate 3
+create 200,20,0,0
+iterate 3
+create 210,20,0,0
+iterate 3
+create 220,20,0,0
+iterate 3
+create 230,20,0,0
+iterate 3
+create 240,20,0,0
+iterate 3
+create 250,20,0,0
+iterate 3
+create 260,20,0,0
+iterate 3
+create 270,20,0,0
+iterate 3
+create 280,20,0,0
+iterate 3
+create 290,20,0,0
+iterate 3
+create 300,20,0,0
+iterate 3
+create 310,20,0,0
+iterate 3
+create 320,20,0,0
+iterate 3
+create 330,20,0,0
+iterate 3
+create 340,20,0,0
+iterate 3
+create 350,20,0,0
+iterate 3
+create 360,20,0,0
+iterate 3
+create 370,20,0,0
+iterate 3
+create 380,20,0,0
+iterate 3
+create 390,20,0,0
+
+iterate 60
+
+create 0,310,3,0
+
+perpetual off
+
+iterate 40
+
+iterate 300
+
+perpetual on
+
+iterate 300
+
+perpetual off
+
+collide on
+create 5,20,0,0
+
+iterate 200
+
+exit

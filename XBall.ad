@@ -1,0 +1,437 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! XBall.ad - xball resource file
+!
+! Copyright 1991, David Nedde
+!
+! Permission to use, copy, modify, and distribute this
+! software and its documentation for any purpose and without fee
+! is granted provided that the above copyright notice appears in all copies.
+! It is provided 'as is' without express or implied warranty.
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+XBall.delay:            100
+XBall.gravity:            8
+XBall.elasticity:        90
+XBall.itemWidth:         10
+XBall.itemHeight:        10
+XBall.collide:        False
+XBall.perpetual:      False
+XBall.haltSim:        False
+
+
+XBall.title: XBall - Written by David Nedde
+
+XBall*form.horizontalSpacing:   2
+XBall*form.verticalSpacing:     2
+XBall*form.width:               400
+XBall*form.height:              400
+XBall.allowShellResize: 	True
+XBall*resizable:                True
+
+
+!!!!!!!!!!
+! Menu Bar
+!!!!!!!!!!
+
+XBall*menuBar.rightAttachment:  ATTACH_FORM
+XBall*menuBar.leftAttachment:   ATTACH_FORM
+! Athena resources
+XBall*menuBar*MenuButton.borderWidth: 0
+XBall*menuBar.borderWidth:            1
+XBall.formAW*translations: #override        \n\
+        <Key>q: menu_action( quit)        \n\
+        Ctrl<Key>q: menu_action( quit)    \n\
+        Ctrl<Key>c: menu_action( quit)    \n\
+        <Key>c: menu_action( clear)       \n\
+        <Key>r: menu_action( randomize)   \n\
+        <Key>s: menu_action( stepSim)     \n\
+        <Key>p: menu_action( perpetual)   \n\
+        <Key>b: menu_action( ballCollide) \n\
+        <Key>h: menu_action( haltSim)     \n\
+        <Key>l: menu_action( loadBitmap)  \n\
+        <Key>d: menu_action( runDemo)     \n\
+        <Key>a: menu_action( about)       \n\
+
+
+! File Submenu
+XBall*file.labelString:         File
+XBall*file.label:               File
+XBall*file.mnemonic:            F
+XBall*about.labelString:        About...
+XBall*about.label:              About...        A
+XBall*about.mnemonic:           A
+XBall*about.accelerator:        <Key>A
+XBall*about.acceleratorText:    A
+XBall*runDemo.labelString:      Run Demo...
+XBall*runDemo.label:            Run Demo...     D
+XBall*runDemo.mnemonic:             D
+XBall*runDemo.accelerator:      <Key>D
+XBall*runDemo.acceleratorText:  D
+XBall*loadBitmap.labelString:   Load Bitmap...
+XBall*loadBitmap.label:         Load Bitmap...  L
+XBall*loadBitmap.mnemonic:      L
+XBall*loadBitmap.accelerator:   <Key>L
+XBall*loadBitmap.acceleratorText: L
+XBall*quit.labelString:         Quit
+XBall*quit.label:               Quit            Q
+XBall*quit.mnemonic:            Q
+XBall*quit.accelerator:         <Key>Q
+XBall*quit.acceleratorText:     Q
+
+! Action Submenu
+XBall*actions.labelString:      Actions
+XBall*actions.label:            Actions
+XBall*actions.mnemonic:         A
+XBall*clear.labelString:        Clear
+XBall*clear.label:              Clear            C
+XBall*clear.mnemonic:           C
+XBall*clear.acceleratorText:    C
+XBall*clear.accelerator:        <Key>C
+XBall*randomize.labelString:    Randomize
+XBall*randomize.label:          Randomize        R
+XBall*randomize.mnemonic:       R
+XBall*randomize.acceleratorText:R
+XBall*randomize.accelerator:    <Key>R
+XBall*stopDemo.labelString:     Stop Demo
+XBall*stopDemo.label:           Stop Demo
+XBall*stepSim.labelString:      Step Simulation
+XBall*stepSim.label:            Step Simulation  S
+XBall*stepSim.mnemonic:         S
+XBall*stepSim.acceleratorText:  S
+XBall*stepSim.accelerator:      <Key>S
+
+! Options Submenu
+XBall*options.labelString:              Options
+XBall*options.label:                    Options
+XBall*options.mnemonic:                 O
+XBall*perpetual.labelString:            Perpetual
+XBall*perpetual.label:                  Perpetual        P
+XBall*perpetual.mnemonic:               P
+XBall*perpetual.acceleratorText:        P
+XBall*perpetual.accelerator:            <Key>P
+XBall*ballCollide.labelString:          Ball Collide
+XBall*ballCollide.label:                Ball Collide     B
+XBall*ballCollide.mnemonic:             B
+XBall*ballCollide.acceleratorText:      B
+XBall*ballCollide.accelerator:          <Key>B
+XBall*haltSim.labelString:              Halt Simulation
+XBall*haltSim.label:                    Halt Simulation  H
+XBall*haltSim.mnemonic:                 H
+XBall*haltSim.acceleratorText:          H
+XBall*haltSim.accelerator:              <Key>H
+
+! Help Submenu
+XBall*help.labelString:         Help
+XBall*help.label:               Help
+XBall*help.mnemonic:            H
+XBall*onAuthor.labelString:     On Author...
+XBall*onAuthor.label:           On Author...
+XBall*onMenus.labelString:      On Menus...
+XBall*onMenus.label:            On Menus...
+XBall*onScroll.labelString:     On Scrollbars...
+XBall*onScroll.label:           On Scrollbars...
+XBall*onButtons.labelString:    On Buttons...
+XBall*onButtons.label:          On Buttons...
+XBall*onDemos.labelString:      On Demos...
+XBall*onDemos.label:            On Demos...
+XBall*onParams.labelString:     On Parameters...
+XBall*onParams.label:           On Parameters...
+
+
+XBall*elasticityBar.topAttachment:      ATTACH_WIDGET
+XBall*elasticityBar.topWidget:          menuBar
+XBall*elasticityBar.leftAttachment:     ATTACH_FORM
+
+XBall*elasticityBar.label.labelString:          Elasticity
+XBall*elasticityBar.label.leftAttachment:       ATTACH_FORM
+XBall*elasticityBar.label.leftOffset:           10
+XBall*elasticityBar.label.topAttachment:        ATTACH_FORM
+XBall*elasticityBar.label.bottomAttachment:     ATTACH_FORM
+! Athena resources
+XBall*elasticityBar.fromVert:                   menuBar
+XBall*elasticityBar.label.label:                Elasticity
+XBall*elasticityBar.label.borderWidth:          0
+
+XBall*elasticityBar.bar.width:          100
+XBall*elasticityBar.bar.orientation:    HORIZONTAL
+XBall*elasticityBar.bar.maximum:        100
+XBall*elasticityBar.bar.minimum:        0
+XBall*elasticityBar.bar.showValue:      True
+! Athena resources
+XBall*elasticityBar.bar.shown:          0.1
+XBall*elasticityBar.borderWidth:        0
+XBall*elasticityBar.label.borderWidth:  0
+XBall*elasticityBar.feedback.borderWidth: 0
+XBall*elasticityBar.defaultDistance:    0
+
+
+
+XBall*gravityBar.label.labelString:      Gravity
+XBall*gravityBar.label.leftAttachment:   ATTACH_FORM
+XBall*gravityBar.label.topAttachment:    ATTACH_FORM
+XBall*gravityBar.label.bottomAttachment: ATTACH_FORM
+! Athena resources
+XBall*gravityBar.label.label:           Gravity
+XBall*gravityBar.label.borderWidth:     0
+
+XBall*gravityBar.leftAttachment:        ATTACH_WIDGET
+XBall*gravityBar.leftWidget:            elasticityBar
+XBall*gravityBar.leftOffset:            20
+XBall*gravityBar.topAttachment:         ATTACH_WIDGET
+XBall*gravityBar.topWidget:             menuBar
+XBall*gravityBar.bar.width:             100
+XBall*gravityBar.bar.orientation:       HORIZONTAL
+XBall*gravityBar.bar.maximum:           100
+XBall*gravityBar.bar.minimum:           0
+XBall*gravityBar.bar.showValue:         True
+! Athena resources
+XBall*gravityBar.fromVert:              menuBar
+XBall*gravityBar.horizDistance:         20
+XBall*gravityBar.fromHoriz:             elasticityBar
+XBall*gravityBar.bar.shown:             0.1
+XBall*gravityBar.borderWidth:           0
+XBall*gravityBar.label.borderWidth:     0
+XBall*gravityBar.feedback.borderWidth:  0
+XBall*gravityBar.defaultDistance:       0
+
+XBall*canvas.resizable:                 True
+XBall*canvas.borderWidth:               1
+XBall*canvas.topAttachment:             ATTACH_WIDGET
+XBall*canvas.topWidget:                 gravityBar
+XBall*canvas.bottomAttachment:          ATTACH_FORM
+XBall*canvas.rightAttachment:           ATTACH_FORM
+XBall*canvas.leftAttachment:            ATTACH_FORM
+! Athena resources
+XBall*canvas.fromVert:                  gravityBar
+XBall*canvas.width:                     400
+XBall*canvas.height:                    330
+
+
+XBall*help_dialog_popup.title:                      XBall Information
+XBall*help_dialog_action_area.leftAttachment:       ATTACH_FORM
+XBall*help_dialog_action_area.rightAttachment:      ATTACH_FORM
+XBall*help_dialog_action_area.bottomAttachment:     ATTACH_FORM
+XBall*help_dialog_action_area.close.labelString:    Close
+XBall*help_dialog.close.label:                      Close
+XBall*help_dialog.separator.rightAttachment:        ATTACH_FORM
+XBall*help_dialog.separator.leftAttachment:         ATTACH_FORM
+XBall*help_dialog.separator.topOffset:              5
+XBall*help_dialog.separator.bottomAttachment:       ATTACH_WIDGET
+XBall*help_dialog.separator.bottomWidget:           help_dialog_action_area
+XBall*help_dialog*help_text.rows:                   12
+XBall*help_dialog*help_text.columns:                60
+! Athena Resources
+XBall*help_dialog*help_textAW.displayCaret:         False
+XBall*help_dialog*help_textAW.height:               150
+XBall*help_dialog*help_textAW.width:                470
+XBall*help_dialog*help_textAW.scrollHorizontal:     WhenNeeded
+XBall*help_dialog*help_textAW.scrollVertical:       WhenNeeded
+
+XBall*help_dialog*close.accelerators: \
+        <KeyPress>Escape: set() notify() unset() \n\
+        <KeyPress>Return: set() notify() unset() \n\
+
+
+
+!!!!!!!!!!!
+! Help text
+!!!!!!!!!!!
+!
+! Note that since fallback resources cannot handle \n in the text,
+! a ~ is used to indicate a newline.
+!
+!!!!!!!!!!
+
+XBall.pointerHelp: \
+                   MOUSE BUTTON USAGE ~~~\
+Button 1: o Hold down to create a ball. ~\
+          o Throw the ball by moving the mouse and ~\
+            letting go of button 1. ~\
+          o The ball will be going the speed of the ~\
+            pointer at release time. ~\
+Button 2: o Hold down and move the mouse to create ~\
+            random velocity balls. ~\
+Button 3: o Hold down and move the mouse to create ~\
+            zero velocity balls. \
+
+XBall.menuHelp: \
+                   PULLDOWN MENU USAGE~~~\
+File~\
+  About...        A description of the program and author~\
+  Run Demo...     Allows you to execute XBall demo files~\
+                  See 'Help On Demos' for demo file format~\
+  Load Bitmap...  Load an X bitmap as a set of balls~\
+                  Analogous Demo command: ~\
+                    bitmap filename posx,posy~\
+  Quit            Exits the program~~\
+Actions~\
+  Clear           Clear the screen of balls~\
+                  Analogous Demo command: clear~\
+  Randomize       Give each ball a random velocity~\
+                  Analogous Demo command: ~\
+                    randomize minx,maxx,miny,maxy~\
+  Stop Demo       Stops the execution of a demo in progress~\
+                  Enabled by the Run Demo... menu option~\
+                  Analogous Demo command: stop~\
+  Step Simulation Perform one step of the Halted simulation~\
+                  Enabled by the Halt Simulation menu option~~\
+Options~\
+  Perpetual       If toggled on, balls will live forever~\
+                  Analogous Demo command: perpetual on|off~\
+                  Command line option: -perpetual True|False~\
+  Ball Collide    If on, balls will collide with one another~\
+                  Analogous Demo command: collide on|off~\
+                  Command line option: -collide True|False~~\
+  Help Simulation Stop the simulation.  You can then step the~\
+                  simulation using Step Simulation menu option~~\
+Help~\
+  On Menus      Help using the menu system~\
+  On Scrollbars Help on the Elasticity and Gravity bars~\
+  On Buttons    Help on using the mouse buttons to create balls~\
+  On Demos      Help on the Demo language and how to run demos~\
+  On Parameters Help with command-line arguments to xball \
+
+
+XBall.scrollbarHelp: \
+                      SCROLLBAR USAGE~~~\
+Elasticity~\
+  o This scrollbar controls the balls' elasticity, or how~\
+    much energy is lost each time the balls hit the ground.~\
+  o Scrollbar to left:  low elasticity (eggs)~\
+  o Scrollbar to right: high elasticity (superballs)~\
+  o Demo command: elasticity %d~\
+  o Command line options: -elasticity %d~~~\
+Gravity~\
+  o This scrollbar controls the gravity, or how~\
+    much vertical velocity is added (subtracted)~\
+    from the balls for each iteration.~\
+  o Scrollbar to the left:  Zero gravity (outer space)~\
+  o Scrollbar to the right: Large gravity (Jupiter)~\
+  o Demo command: gravity %d~\
+  o Command line options: -gravity %d \
+
+
+XBall.demoHelp: \
+                     DEMO FILE COMMANDS~~\
+  %s1, %s2... - Replace with a string~\
+  %d1, %d2... - Replace with an integer~~\
+  create %d1,%d2,%d3,%d4: Create a ball with x,y position~\
+                          %d1,%d2 and an x & y velocity~\
+                          of %d2,%d4~\
+  randomize %d1,%d2,%d3,%d4: randomize velocities of all ~\
+                balls on screen with:~\
+                a max negative x velocity of %d1,~\
+                a max positive x velocity of %d2,~\
+                a max negative y velocity of %d3,~\
+                a max positive y velocity of %d4,~\
+  load_bitmap %s %d1,%d2: load a bitmap file (where %s is~\
+                         the file path) to an x,y position~\
+                         of %d1,%d2 on the screen~\
+  set_velocity %s %d1,%d2: set ball velocities (%s is~\
+                         relative or absolute) to the x ~\
+                         and y velocities %d1,%d2~\
+  gravity %d: set gravity to %d~\
+  elasticity %d: set elasticity to %d~\
+  backwards %d: Run simulation backwards %d iterations~\
+  visible %s: Make ball display 'on' or 'off'~\
+  iterate %d: simulate for %d iterations~\
+  sleep %d: sleep for %d seconds~\
+  perpetual %s: toggle perpetual (%s is 'on' or 'off')~\
+  collide %s: toggle ball collision (%s is 'on' or 'off')~\
+  window_width %d: Change window width to %d~\
+  window_height %d: Change window height to %d~\
+  backwards %d: Iterate backwards %d steps~\
+  clear: delete all balls in window~\
+  create_random %d1,%d2: create %d1 random balls with a ~\
+                         max velocity of %d2~\
+  exit or quit: quit the xball program if demo is not~\
+                interactive~\
+  stop: stop demo but leave program alive \
+
+XBall.startupHelp: \
+                PROGRAM STARTUP PARAMETERS~~~\
+ Run xball -help for a list of command-line startup~\
+ parameters
+
+XBall.aboutString: \
+XBall Version 0.3.0~~\
+  April 1993~~\
+The Premire Ball Bouncing Software~~\
+  Allows you to throw 3-D balls around in a 2-D space.~~\
+Author (Send bugs, comments, and interesting demos to):~\
+  David Nedde~\
+  daven@ivy.wpi.edu~\
+  Computer Science Department~\
+  Worcester Polytechnic Institute~\
+  Worcester, MA 01609~~\
+Copyright 1990, 1993 David Nedde~\
+Permission to use, copy, modify, and distribute this~\
+software and its documentation for any purpose and~\
+without fee is granted provided that the above~\
+copyright notice appears in all copies.  It is~\
+provided \"as is\" without express or implied warranty. \
+
+
+!!!!!!!!!!!!!!!!!
+! Menu Definition
+!!!!!!!!!!!!!!!!!
+!
+! Format:
+!   pulldownName~
+!     widgetName,widgetClass,menuCallbackName,optionalParams...~
+!
+! The widgetName is referenced above to set the menu's label.
+!
+! Note that the pulldownName of 'help' is automatically used as the help 
+! pulldown.
+!
+! Avaliable WidgetClasses are:
+!   PushButton   - push it and cause the action
+!   ToggleButton - Push it and toggle the state
+!   Separator    - A line in the menu
+!
+! Avaliable menuCallbackNames avaliable (none take optional parameters):
+!   runDemo       - Lets user select a demo and run the demo
+!   loadBitmap    - Lets user load a bitmap file
+!   quit          - quits xball program
+!   clear         - Clear all balls from the screen
+!   randomize     - Randomize all balls from the screen
+!   stopDemo      - Stop a demo in progress
+!   stepSim       - Steps the simulation once (if simulation halted)
+!   perpetual     - Toggles perpetual balls state
+!   ballCollide   - Toggles colliding ball state
+!   haltSim       - Toggles halting the simulation
+!   about         - Displays help about the program
+!   onMenus       - Displays help on the menus
+!   onScroll      - Displays help on setting elasticity and gravity
+!   onButtons     - Displays help on using the mouse buttons to create balls
+!   onDemos       - Displays help on writing a demo
+!   onParams      - Displays help on command-line arguments
+!
+!!!!!!!!!!!!!!!!!
+
+XBall.menuDef: \
+\
+    file~\
+    about,PushButton,about~\
+    runDemo,PushButton,runDemo~\
+    loadBitmap,PushButton,loadBitmap~\
+    separator,Separator~\
+    quit,PushButton,quit~\
+    actions~\
+    clear,PushButton,clear~\
+    randomize,PushButton,randomize~\
+    stopDemo,PushButton,stopDemo~\
+    stepSim,PushButton,stepSim~\
+    options~\
+    perpetual,ToggleButton,perpetual~\
+    ballCollide,ToggleButton,ballCollide~\
+    haltSim,ToggleButton,haltSim~\
+    help~\
+    about,PushButton,about~\
+    onMenus,PushButton,onMenus~\
+    onScroll,PushButton,onScroll~\
+    onButtons,PushButton,onButtons~\
+    onDemos,PushButton,onDemos~\
+    onParams,PushButton,onParams~\
+

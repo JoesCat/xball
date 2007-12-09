@@ -1,0 +1,153 @@
+xball (3.0.1-1) unstable; urgency=low
+
+  * New upstream release, consolidates all 3.0 patches
+    - Change debhelper compat from 4 to 5
+    - Change standards version to 3.7.3
+    - Change to three part numbering, new version is 3.0.1
+    - Get xball version number from changelog, see rules file for details
+    - Cleanup some of the old pre-autoconf cruft
+    - Fix rules, Lintian was giving debian-rules-ignores-make-clean-error
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Sun,  9 Dec 2007 22:01:23 +0000
+
+xball (3.0-18) unstable; urgency=low
+
+  * Remove strange vi file from debian directory, :visual
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Wed, 21 Nov 2007 22:34:23 +0000
+
+xball (3.0-17) unstable; urgency=low
+
+  * Apply NMU patch, merge with upstream
+  * Change standards version to 3.7.2
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Tue, 20 Nov 2007 00:37:52 +0000
+
+xball (3.0-16.1) unstable; urgency=low
+
+  * NMU to fix RGB_TXT and all other references to point to /etc/X11/rgb.txt,
+    as it is in x11-common. (Closes: #377652).
+  * Added the demo files to the documentation.
+
+ -- Margarita Manterola <marga@debian.org>  Thu, 13 Jul 2006 19:32:23 -0300
+
+xball (3.0-16) unstable; urgency=high
+
+  * Update to add patch in "NMU" 3.0-15.1 (closes: #303337)
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Thu, 14 Apr 2005 11:38:18 +0100
+
+xball (3.0-15.1) unstable; urgency=low
+
+  * NMU - Thanks Paul for the patch! (SGB)
+  * Adds 'rm -rf .deps' to debian/rules clean (closes: #303337)
+
+ -- Paul Brossier <piem@altern.org>  Wed, 13 Apr 2005 03:09:43 +0100
+
+xball (3.0-15) unstable; urgency=low
+
+  * Add libxt-dev to build-depends to arm can build
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Wed, 23 Mar 2005 14:38:15 +0000
+
+xball (3.0-14) unstable; urgency=low
+
+  * Make demo_start() static declaration (closes: #288656)
+  * Added config.guess and config.sub from automake1.4
+  * Added content to NEWS and ChaneLog so patch creates them
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Wed, 23 Feb 2005 08:51:33 +0000
+
+xball (3.0-13) unstable; urgency=low
+
+  * Use gettimeofday() to compute consistant delay
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Tue, 21 Dec 2004 15:06:29 +0000
+
+xball (3.0-12) unstable; urgency=low
+
+  * chmod +x missing to rules (closes: #283269)
+  * Run 'make distclean' from clean target in rules
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Sun, 28 Nov 2004 08:28:49 -0500
+
+xball (3.0-11) unstable; urgency=low
+
+  * Fix more automake problems (NEWS and ChangeLog files)
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Sun, 28 Nov 2004 08:26:19 -0500
+
+xball (3.0-10) unstable; urgency=low
+
+  * Make configure executable in rules file
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Thu, 25 Nov 2004 12:48:31 +0000
+
+xball (3.0-9) unstable; urgency=low
+
+  * More minor changes to makefile system
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Mon, 22 Nov 2004 17:34:48 +0000
+
+xball (3.0-8) unstable; urgency=low
+
+  * Run autoconf prior to uploading to debian
+  * Remove automake, autoconf1.9 dependency
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Mon, 22 Nov 2004 17:09:48 +0000
+
+xball (3.0-7) unstable; urgency=low
+
+  * hard code automake to automake1.9 (closes: #272239)
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Mon,  1 Nov 2004 04:41:45 -0500
+
+xball (3.0-6) unstable; urgency=low
+
+  * Compile againt lesstif2 instead of lesstif (closes: #269285)
+  * Change automaken dependancy to automake
+
+ -- Stephen Birch <sgbirch@xeon.uk.imsmail.org>  Fri,  3 Sep 2004 11:29:57 +0100
+
+xball (3.0-5) unstable; urgency=low
+
+  * Remove postinst and preinst file, not required
+  * Update rules file to be policy complient
+  * Closes: #244289: Package includes non-free source code.
+  * Closes: #256422: Missing Build-Depends
+
+ -- Stephen Birch <sgbirch@xeon.uk.birch.ws>  Sun, 27 Jun 2004 11:06:34 +0100
+
+xball (3.0-4) unstable; urgency=low
+
+  * Change bootstrap to make '/xball-3.0/missing' executable
+  * Add automaken to the list of compile dependencies
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Sun, 28 Mar 2004 14:27:22 -0500
+
+xball (3.0-3) unstable; urgency=low
+
+  * Add comment to README telling user where to find program (usr/games)
+  * Re-release with correct orig.tar.gz, removing .svn directories
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Fri, 26 Mar 2004 11:49:14 -0500
+
+xball (3.0-2) unstable; urgency=low
+
+  * Move xball binary to /usr/games per 11.11 of policy
+  * Quote all sections of xball.menu to help lintian
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Fri, 19 Mar 2004 15:31:52 +0000
+
+xball (3.0-1) unstable; urgency=low
+
+  * Initial Release (closes: 230942)
+  * Define scale_set_value in scrollbar.c to prevent compiler warning
+  * Removed gcc from Build-Depends
+  * Spell checked and improved descriptions
+  * Converted from Imake to GNU automake/autoconf
+  * Remove Makefile and configure from debian sources
+  * Add menu system
+
+ -- Stephen Birch <sgbirch@imsmail.org>  Sat, 31 Jan 2004 10:55:51 +0000
+

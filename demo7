@@ -1,0 +1,12 @@
+# Tall window of raining balls
+
+window_width 190
+window_height 700
+elasticity 80
+collide off
+create_random 50,30
+perpetual on
+iterate 500
+exit
+
+

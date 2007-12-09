@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Input files are Makefile.am and configure.ac
+# 
+
+aclocal
+automake --gnu --add-missing
+autoconf

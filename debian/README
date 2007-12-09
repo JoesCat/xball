@@ -1,0 +1,12 @@
+xball for DEBIAN and Ubuntu
+---------------------------
+
+Per Debian policy recommendations the program is installed in
+/usr/games (not /usr/bin). That means it is not in the normal
+PATH. The program can be started either from the window manager menu
+structure or with the following command:
+
+$ /usr/games/xball
+
+Stephen Birch <sgbirch@imsmail.org>
+

@@ -1,0 +1,25 @@
+# Backwards with gravity into xball bitmap
+
+visible off
+
+collide off
+elasticity 100
+load_bitmap xball.xbm 0,-60
+gravity 10
+randomize -3,3,0,3
+#set_velocity rel 0,1
+
+iterate 20
+
+visible on
+backwards 21
+
+set_velocity abs 0,0
+gravity 0
+sleep 1
+randomize 10
+gravity 20
+elasticity 85
+iterate 200
+
+exit

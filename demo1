@@ -1,0 +1,27 @@
+# Load a bitmap, randomize, and let fall through once.
+
+collide    off
+perpetual  off
+
+load_bitmap xball.xbm 10,10
+#load_bitmap /usr/include/X11/bitmaps/left_ptr 0,0
+gravity      0
+iterate 50
+sleep 1
+
+gravity     10
+randomize   -10,10,-10,10
+perpetual   on
+
+iterate     30
+
+elasticity  80
+gravity     30
+
+iterate    200
+
+perpetual  off
+
+iterate    200
+
+exit
