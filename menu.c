@@ -132,7 +132,7 @@ menu_type menu;
 }
 
 
-/* Registers an avaliable callback.  This callback can then be
+/* Registers an available callback.  This callback can then be
    referenced by the menu definition resource.  If the callback is
    referenced, the menuCallbackProc is invoked. */
 void menu__add_callback( menu, action_name, menu_callback_proc, user_data)
@@ -141,7 +141,7 @@ char            *action_name;
 menuCallbackProc menu_callback_proc;
 caddr_t          user_data;
 {
-    /* Store avaliable callback into table */
+    /* Store available callback into table */
     menuCallback *menu_node = XtNew( menuCallback);
     
 

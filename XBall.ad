@@ -390,7 +390,7 @@ provided \"as is\" without express or implied warranty. \
 !   ToggleButton - Push it and toggle the state
 !   Separator    - A line in the menu
 !
-! Avaliable menuCallbackNames avaliable (none take optional parameters):
+! Avaliable menuCallbackNames available (none take optional parameters):
 !   runDemo       - Lets user select a demo and run the demo
 !   loadBitmap    - Lets user load a bitmap file
 !   quit          - quits xball program

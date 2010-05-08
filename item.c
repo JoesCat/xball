@@ -98,7 +98,7 @@ int y_vel;
     item->display = static_data->display;
     item->window  = static_data->window;
 
-    /* Draw with the next avaliable pixmap image (color) */
+    /* Draw with the next available pixmap image (color) */
     static_data->curr_pixmap = 
         (static_data->curr_pixmap + 1) % static_data->num_colors;
 

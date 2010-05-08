@@ -128,7 +128,7 @@ Widget w;
     scrollbar__set_value( xball_system->elasticity_bar, res_data.elasticity);
 
 
-    /* Register avaliable menu callbacks */
+    /* Register available menu callbacks */
 
     menu__add_callback(menu, "runDemo",  demo__run_mcb,  demo);
     menu__add_callback(menu, "stopDemo", demo__stop_mcb, demo);
