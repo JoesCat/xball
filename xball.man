@@ -3,19 +3,19 @@
 xball \- bounce balls on the screen
 .SH SYNOPSIS
 .B xball
-[ -help -delay
+[ \-help \-delay
 .I delay
--gravity
+\-gravity
 .I percent-gravity
--elasticity
+\-elasticity
 .I percent-elasticity
--itemWidth
+\-itemWidth
 .I ball-width
--itemHeight
+\-itemHeight
 .I ball-height
--collide -perpetual -haltSim -demoFile
+\-collide \-perpetual \-haltSim \-demoFile
 .I demo-file
--rgbTxt
+\-rgbTxt
 .I rgb.txt-file
 ]
 [XToolkit options]
@@ -28,12 +28,12 @@ run demo which create and manipulate the balls in various ways.
 Documentation is included on-line via the Help menu and is not
 reproduced here.
 .SH OPTIONS
-Run xball -help for a decription of the command line options
+Run xball \-help for a decription of the command line options
 .SH DEMOS
 Several demo files are included with the distribution.  To run all the
 demos, run 'run_demos'.
 .SH RESOURCES
-Most resources are avaliable for user modification.  See the XBall
+Most resources are available for user modification.  See the XBall
 app-defaults file for a complete listing of widgets,
 .sp
 Following is a list of the most useful resources:
