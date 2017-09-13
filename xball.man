@@ -28,7 +28,7 @@ run demo which create and manipulate the balls in various ways.
 Documentation is included on-line via the Help menu and is not
 reproduced here.
 .SH OPTIONS
-Run xball \-help for a decription of the command line options
+Run xball \-help for a description of the command line options
 .SH DEMOS
 Several demo files are included with the distribution.  To run all the
 demos, run 'run_demos'.
