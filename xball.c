@@ -25,8 +25,9 @@
 #include "patchlevel.h"
 
 /*** Start of main program ***/
+int
 main(argc,argv)
-unsigned argc;
+int argc;
 char **argv;
 {
     /* Use the app-defaults file as a set of strings for the fallback */
