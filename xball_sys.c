@@ -26,6 +26,7 @@
 #include "xball_sys.h"
 #include "names.h"
 #include "misc.h"
+#include <stdlib.h>
 
 
 /* Creates the xball system.  This object holds together the other

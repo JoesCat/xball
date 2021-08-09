@@ -12,6 +12,7 @@
 /* System Headers */
 #include <malloc.h>
 #include <string.h>
+#include <stdlib.h>
 
 
 /* Given a string 'text\nmore text', allocates and returns the

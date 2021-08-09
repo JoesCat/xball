@@ -23,6 +23,7 @@
 #include "names.h"
 #include "intf.h"
 #include "miscx.h"
+#include <stdlib.h>
 
 /* Structures */
 typedef struct {

@@ -23,6 +23,7 @@
 #include "xball_sys.h"
 #include "miscx.h"
 #include "patchlevel.h"
+#include <stdlib.h>
 
 /*** Start of main program ***/
 int
@@ -56,7 +57,7 @@ char **argv;
 
     if (argc > 1 && strncmp(argv[1],"-help", strlen(argv[1])) == 0)
     {
-        printf("XBall - version %d, patchlevel %d.\n\n", VERSION, PATCHLEVEL);
+        printf("XBall - version %s, patchlevel %d.\n\n", VERSION, PATCHLEVEL);
         puts("Usage:\n\txball [-options ...]\n\nWhere options include:");
         puts(" Option          Default  Resource      Meaning");
         puts(" -help                                  Print out this message");

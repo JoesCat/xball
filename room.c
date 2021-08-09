@@ -27,6 +27,7 @@
 /* Local headers */
 #include "room.h"
 #include "misc.h"
+#include "miscx.h"
 #include "scrollbar.h"
 
 /* Macros */
