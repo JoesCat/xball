@@ -70,7 +70,7 @@ char **argv;
         puts(" -perpetual               perpetual     Balls do not die if specified");
         puts(" -haltSim                 haltSim       Starts w/simulation halted if specified");
         puts(" -demoFile                demoFile      A demo file to run at startup");
-        puts(" -rgbTxt           /etc/X11/rgb.txt     Path to rgb file");
+        puts(" -rgbTxt         /usr/share/X11/rgb.txt Path to rgb file");
 
         exit(0);
     }

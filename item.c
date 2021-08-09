@@ -31,7 +31,7 @@
 #define ITEM_WIDTH  10  /* The item's default size */
 #define ITEM_HEIGHT 10
 #ifndef RGB_TXT
-#define RGB_TXT     "/etc/X11/rgb.txt"
+#define RGB_TXT     "/usr/share/X11/rgb.txt"
 #endif
 
 /* put_pixmap - Draws the item's pixmap to the specified location */

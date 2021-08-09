@@ -63,10 +63,10 @@ Specified the file to run as a demo on startup.
 .TP 3
 \fBXBall.rgbTxt\fR
 Specified the file to load for the colors.  The default file is
-/etc/X11/rgb.txt
+/usr/share/X11/rgb.txt
 .SH FILES
 .TP
-/etc/X11/rgb.txt X11 color names and values.
+/usr/share/X11/rgb.txt X11 color names and values.
 .sp
 .SH AUTHOR
 .PP
