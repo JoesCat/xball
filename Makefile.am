@@ -7,3 +7,4 @@ xball_SOURCES = xball.c color_l.c demo.c file_sel.c sim.c \
 	table.c xball_sys.c scrollbar.c
 xball_LDADD = -L/usr/X11R6/lib -lXm -lXmu -lXt -lX11
 
+man_MANS = xball.6
