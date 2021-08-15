@@ -1,0 +1,17 @@
+[Desktop Entry]
+Version=1.0
+Name=XBall
+GenericName=X11 ball simulation
+Comment=Simulate bouncing balls in a window
+Comment[de]=Simuliere springende Bälle in einem Fenster
+Comment[fr]=Simulez des balles rebondissantes dans une fenêtre simulée
+Comment[pt]=Simular bolas rebatidas em uma janela simulada
+TryExec=xball
+Exec=xball -demo %U
+Icon=xball
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Game;Simulation;
+MimeType=application/x-xball
+Keywords=balls;X;window;bouncing;

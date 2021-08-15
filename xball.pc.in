@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+bindir=@bindir@
+libdir=@libdir@
+includedir=@includedir@
+datarootdir=@datarootdir@
+mandir=@mandir@
+localedir=@localedir@
+
+Name: xball
+Description: bounce balls on the screen.
+URL: https://packages.debian.org/sid/xball
+Version: @XBALL_VERSION@

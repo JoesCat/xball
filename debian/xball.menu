@@ -1,5 +1,0 @@
-?package(xball):needs="X11" \
-      section="Games/Toys" \
-      title="Xball simulation" \
-      command="/usr/games/xball" \
-      icon="/usr/share/pixmaps/xball.xpm"

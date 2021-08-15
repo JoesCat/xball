@@ -1,5 +1,7 @@
 ## IMPORTANT - If you change this file, run the bootstrap script again
 
+SUBDIRS = . desktop
+
 bin_PROGRAMS = xball
 
 xball_SOURCES = xball.c color_l.c demo.c file_sel.c sim.c \

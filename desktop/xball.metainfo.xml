@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2021 Joe Da Silva <digital@joescat.com> -->
+<component type="desktop">
+  <id>xball</id>
+  <launchable type="desktop-id">xball.desktop</launchable>
+  <metadata_license>CC0-1.0</metadata_license>
+  <name>XBall</name>
+  <summary>Simulates bouncing balls in a window</summary>
+  <description>
+    <p xml:lang="C">
+    This program simulates bouncing balls in a window.  You create the balls
+    in a variety of ways, and can set the gravity, elasticity, whether balls
+    collide or not, etc.</p>
+    <p xml:lang="C">
+    Software features user-configurable menus, and a DrawingArea widget for
+    use with other Athena widgets.</p>
+    <p xml:lang="C">
+    All resources are contained within the program as fallback resources, so,
+    it is not strictly neccessary to install the app-defaults file, except
+    that when using Athena widgets, since the keyboard accelertors will not
+    work if the app-defauls file is not installed.</p>
+    <p xml:lang="C">
+    To run the included demos, open a console terminal and type 'run_demos'.</p>
+  </description>
+  <url type="homepage">https://tracker.debian.org/pkg/xball</url>
+  <url type="help">https://packages.debian.org/unstable/xball</url>
+  <url type="bugtracker">https://bugs.debian.org/xball</url>
+  <url type="donation">https://www.debian.org/donations</url>
+  <update_contact>packages@qa.debian.org</update_contact>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release date="2017-09-18" version="3.0.1-2"/>
+  </releases>
+  <project_license>ISC</project_license>
+  <developer_name>David Nedde</developer_name>
+  <screenshots>
+    <screenshot type="default">https://screenshots.debian.net/shrine/screenshot/8154/simage/thumb-d5b1a6d95759fdf917ba37251d9d98cc.png</screenshot>
+  </screenshots>
+</component>

@@ -4,8 +4,9 @@ echo '*** Xball Demos ***'
 echo "Hit 'q' in the xball window to exit a demo early"
 echo ""
 
-for f in demo1 demo2 demo3 demo4 demo5 demo6 demo7 demo8 demo9 demo10 demo11 \
-         demo12 demo13 demo14
+for f in demo1.xball demo2.xball demo3.xball demo4.xball demo5.xball \
+         demo6.xball demo7.xball demo8.xball demo9.xball demo10.xball \
+         demo11.xball demo12.xball demo13.xball demo14.xball
 do
   echo "Running demo: $f"
   xball -demo $f
