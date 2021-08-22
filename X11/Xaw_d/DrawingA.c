@@ -12,7 +12,7 @@
 #include <X11/StringDefs.h>
 #include <X11/CoreP.h>
 #include <X11/Xaw/SimpleP.h>
-#include <X11/Xaw_d/DrawingAP.h>
+#include "DrawingAP.h"
 
 static void	Initialize();
 static void	Destroy();

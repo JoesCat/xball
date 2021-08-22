@@ -10,15 +10,12 @@
     in a variety of ways, and can set the gravity, elasticity, whether balls
     collide or not, etc.</p>
     <p xml:lang="C">
-    Software features user-configurable menus, and a DrawingArea widget for
-    use with other Athena widgets.</p>
+    Young children enjoy watching the balls bounce around the screen and are
+    fascinated by the program. This is an ideal program for teaching rudimentary
+    mouse skills to very young children.</p>
     <p xml:lang="C">
-    All resources are contained within the program as fallback resources, so,
-    it is not strictly neccessary to install the app-defaults file, except
-    that when using Athena widgets, since the keyboard accelertors will not
-    work if the app-defauls file is not installed.</p>
-    <p xml:lang="C">
-    To run the included demos, open a console terminal and type 'run_demos'.</p>
+    To run the 14 included demo scripts, open a console terminal and type
+    'run_demos' to see each demo one after the next.</p>
   </description>
   <url type="homepage">https://tracker.debian.org/pkg/xball</url>
 </application>

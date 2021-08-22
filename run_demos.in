@@ -1,4 +1,3 @@
-#!/bin/sh
 
 echo '*** Xball Demos ***'
 echo "Hit 'q' in the xball window to exit a demo early"
@@ -8,7 +7,7 @@ for f in demo1.xball demo2.xball demo3.xball demo4.xball demo5.xball \
          demo6.xball demo7.xball demo8.xball demo9.xball demo10.xball \
          demo11.xball demo12.xball demo13.xball demo14.xball
 do
-  echo "Running demo: $f"
-  xball -demo $f
+  echo "Running demo: $d/$f"
+  xball -demo $d/$f
   sleep 1  # Let X catch up with events...
 done

@@ -10,17 +10,21 @@
  **********************************************************************/
 
 #include <stdio.h>
+#include <stdlib.h>
 
+#include <X11/Xlib.h>
 #include <X11/StringDefs.h>
 #include <X11/IntrinsicP.h>
 #include <X11/CoreP.h>
-#include "X11/Xaw_d/DrawingA.h"
-#include <X11/Xaw/Form.h>
+#include "DrawingAP.h"
 #include <X11/Xaw/Command.h>
+#include <X11/Xaw/Form.h>
+#include <X11/Xaw/Text.h>
 
 GC gc = 0;
 
 /*** Start of main program ***/
+int
 main(argc, argv)
 int    argc;
 char **argv;
@@ -75,7 +79,6 @@ XtPointer call_data;
 {
     exit(0);
 }
-
 
 
 setup_widgets( toplevel )

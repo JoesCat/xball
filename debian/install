@@ -1,3 +1,0 @@
-demo[0-9]* *.xbm run_demos /usr/share/xball/
-debian/xball.xpm /usr/share/pixmaps/
-

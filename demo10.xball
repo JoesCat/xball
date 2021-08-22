@@ -1,8 +1,8 @@
 # Draw word and then drop it
 # This demo was made by uncommenting the printf in item.c: item__create.
-# Then, run xball, redirecting output to your demo file.  
-# Set the gravity to 0, then draw something with mouse button 3.  
-# Quit xball, modify the demo a litlle, and you are dome
+# Then, run xball, redirecting output to your demo file.
+# Set the gravity to 0, then draw something with mouse button 3.
+# Quit xball, modify the demo a little, and you are dome
 
 gravity 0
 elasticity 60
