@@ -1,0 +1,13 @@
+
+load_bitmap @xball@/xball-x.xbm 10,10
+iterate 10
+load_bitmap @xball@/xball-b.xbm 90,10
+iterate 10
+load_bitmap @xball@/xball-a.xbm 170,10
+iterate 10
+load_bitmap @xball@/xball-l.xbm 250,10
+iterate 10
+load_bitmap @xball@/xball-l.xbm 310,10
+iterate 200
+
+exit

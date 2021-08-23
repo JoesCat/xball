@@ -3,4 +3,5 @@ Xball Authors
 xball: David Nedde <deven@ivy.wpi.edu>
 act_area.c: Written by Dan Heller
 filemenu.c: Po Cheung
-Debian Packaging: Stephen Birch <sgbirch@imsmail.org>
+Debian Packaging, 2004apr29: Stephen Birch <sgbirch@imsmail.org>
+automake Package, 2021aug23: Joe Da Silva <digital@joescat.com>

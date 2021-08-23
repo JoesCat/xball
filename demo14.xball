@@ -1,9 +1,0 @@
-elasticity 90
-load_bitmap man.xbm 10,10
-iterate 60
-load_bitmap man.xbm 160,10
-iterate 60
-load_bitmap man.xbm 310,10
-iterate 400
-
-exit

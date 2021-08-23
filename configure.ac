@@ -3,7 +3,7 @@
 
 AC_PREREQ(2.61)
 
-m4_define([xball_version], [3.0.1])
+m4_define([xball_version], [3.1.0])
 AC_INIT([xball],[xball_version],[packages@qa.debian.org],
 	[xball],[https://packages.debian.org/sid/xball])
 AM_INIT_AUTOMAKE([foreign -Wall])

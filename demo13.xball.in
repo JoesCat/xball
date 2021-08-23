@@ -1,0 +1,14 @@
+elasticity 50
+
+load_bitmap @xball@/xball-x.xbm 10,10
+iterate 20
+load_bitmap @xball@/xball-b.xbm 10,10
+iterate 20
+load_bitmap @xball@/xball-a.xbm 10,10
+iterate 20
+load_bitmap @xball@/xball-l.xbm 10,10
+iterate 20
+load_bitmap @xball@/xball-l.xbm 10,10
+iterate 200
+
+exit

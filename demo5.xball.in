@@ -4,7 +4,7 @@ visible off
 
 collide off
 elasticity 100
-load_bitmap xball.xbm 0,-60
+load_bitmap @xball@/xball.xbm 0,-60
 gravity 10
 randomize -3,3,0,3
 #set_velocity rel 0,1

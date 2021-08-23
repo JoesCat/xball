@@ -1,3 +1,21 @@
+xball (3.1.0)
+
+  * Debian Orphaned xball brought up to date and is buildable with current PCs.
+  * Dropped Debian packaging and reworked xball to be built with configure make.
+  * 'make dist' builds package that can be built by user using ./configure make.
+  * xball.pc package file added.
+  * freedesktop configuration added and improved to include *.xball to be seen
+    as xball scripts. You click demo.xball and it automatically runs xball demo
+    Also added desktop files for 64x64, 128x128, 256x256 icon files.
+  * run_demo is installed in same directory as xball and demo scripts are kept
+    in xball data directory.
+  * Corrected COPYING from boilerplate to what appears to be ISC license.
+  * xball manual is installed as xball.6 in games manual directory.
+  * rgb.txt now searched and found in /usr/X11 directory.
+  * Due to the upgrades, bumped minor value from 0 to 1, making this ver 3.1.0
+
+ -- Joe Da Silva <digital@joescat.com>  Mon, 23 Aug 2021 1:32:00 +0800
+
 xball (3.0.1-2) unstable; urgency=medium
 
   * QA upload.

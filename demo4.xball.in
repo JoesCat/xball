@@ -5,7 +5,7 @@ visible off
 collide off
 elasticity 100
 gravity 0
-load_bitmap xball.xbm 0,0
+load_bitmap @xball@/xball.xbm 0,0
 
 randomize -10,10,-10,10
 backwards 100

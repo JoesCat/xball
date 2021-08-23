@@ -3,7 +3,7 @@
 collide    off
 perpetual  off
 
-load_bitmap xball.xbm 10,10
+load_bitmap @xball@/xball.xbm 10,10
 #load_bitmap /usr/include/X11/bitmaps/left_ptr 0,0
 gravity      0
 iterate 50

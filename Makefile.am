@@ -25,19 +25,54 @@ run_demos: run_demos.in
 	cat ${srcdir}/run_demos.in >> run_demos
 	chmod +x run_demos
 
+do_subst = sed -e 's,[@]xball[@],$(datarootdir)\/xball,' $< > $@
+
+demo1.xball : demo1.xball.in
+	$(do_subst) < $(srcdir)/demo1.xball.in > demo1.xball
+
+demo2.xball : demo2.xball.in
+	$(do_subst) < $(srcdir)/demo2.xball.in > demo2.xball
+
+demo3.xball : demo3.xball.in
+	$(do_subst) < $(srcdir)/demo3.xball.in > demo3.xball
+
+demo4.xball : demo4.xball.in
+	$(do_subst) < $(srcdir)/demo4.xball.in > demo4.xball
+
+demo5.xball : demo5.xball.in
+	$(do_subst) < $(srcdir)/demo5.xball.in > demo5.xball
+
+demo6.xball : demo6.xball.in
+	$(do_subst) < $(srcdir)/demo6.xball.in > demo6.xball
+
+demo12.xball : demo12.xball.in
+	$(do_subst) < $(srcdir)/demo12.xball.in > demo12.xball
+
+demo13.xball : demo13.xball.in
+	$(do_subst) < $(srcdir)/demo13.xball.in > demo13.xball
+
+demo14.xball : demo14.xball.in
+	$(do_subst) < $(srcdir)/demo14.xball.in > demo14.xball
+
 # example demo programs
-DEMOS = demo1.xball demo2.xball demo3.xball demo4.xball demo5.xball \
-	demo6.xball demo7.xball demo8.xball demo9.xball demo10.xball \
-	demo11.xball demo12.xball demo13.xball demo14.xball
+dist_DEMOSin = demo1.xball.in demo2.xball.in demo3.xball.in demo4.xball.in \
+	demo5.xball.in demo6.xball.in demo12.xball.in demo13.xball.in \
+	demo14.xball.in
+
+nodist_DEMOS = demo1.xball demo2.xball demo3.xball demo4.xball demo5.xball \
+	demo6.xball demo12.xball demo13.xball demo14.xball
+
+dist_DEMOS = demo7.xball demo8.xball demo9.xball demo10.xball demo11.xball
+
+IMAGES = xball-a.xbm xball-b.xbm xball-l.xbm xball.xbm xball-x.xbm \
+	man.xbm off.xbm on.xbm sgi.xbm
 
 demosdir = ${datarootdir}/xball
-demos_DATA = ${DEMOS}
+demos_DATA = ${dist_DEMOS} ${nodist_DEMOS} ${IMAGES}
 
-EXTRA_DIST = run_demos.in ${DEMOS} ${noinst_HEADERS} \
+EXTRA_DIST = run_demos.in ${dist_DEMOS} ${dist_DEMOSin} ${IMAGES} \
 	act_area.c bootstrap filemenu.c gen_fallback good_bitmaps \
-	man.xbm off.xbm on.xbm sgi.xbm stipple.xbm XBall.ad \
-	xball-a.xbm xball-b.xbm xball-l.xbm xball.xbm xball-x.xbm \
-	xball.6
+	stipple.xbm XBall.ad xball.6 ${noinst_HEADERS}
 
 MOSTLYCLEANFILES = run_demos
 DISTCLEANFILES = run_demos
@@ -46,9 +81,10 @@ uninstall-hook:
 	if test -d ${datarootdir}/xball; then rmdir ${datarootdir}/xball; fi
 
 clean-local:
-	-rm -rf run_demos
+	-rm -rf run_demos ${nodist_DEMOS}
 
 distclean-local:
 	-rm *~
 	-rm -rf autom4te.cache
 	-rm -rf .deps
+	-rm -rf ${nodist_DEMOS}

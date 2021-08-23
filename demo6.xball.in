@@ -1,7 +1,7 @@
 # Xball word collides with itself horizontally
 
 
-load_bitmap xball.xbm 0,0
+load_bitmap @xball@/xball.xbm 0,0
 #load_bitmap /usr/include/X11/bitmaps/left_ptr 0,0
 
 collide off
