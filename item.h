@@ -84,6 +84,9 @@ void      item__collide_mcb(/*w, item, call_data, extra*/);
 void      item__set_perpetual(/* set */);
 void      item__set_ball_collide(/* set*/);
 void      item__set_visible(/*visible*/);;
+#ifdef DEBUG
+void      item__print(/* item */);
+#endif
 
 
 /* Inline functions */

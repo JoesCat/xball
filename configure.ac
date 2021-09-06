@@ -19,6 +19,17 @@ AC_CHECK_HEADER([X11/Intrinsic.h],[],[AC_MSG_FAILURE([ERROR: Missing X11/Intrins
 AC_CHECK_HEADER([Xm/Xm.h],[],[AC_MSG_FAILURE([ERROR: Missing Xm/Xmu.h, Please install Developer version of libxmotif-devel or lib64motif-devel],[1])])
 AC_CHECK_HEADER([X11/Xmu/Converters.h],[],[AC_MSG_FAILURE([ERROR: Missing X11/Xmu/Converters.h, Please install Developer version of libxmu-devel or lib64xmu-devel],[1])])
 
+# Enable debug mode
+AC_ARG_ENABLE([debug],
+  [AS_HELP_STRING([--enable-debug],
+    [Enable DEBUG printf mode on commandline @<:@default=no@:>@])],
+  [],[enable_debug=no])
+makeDebug=no
+if test "x$enable_debug" = xyes || test "x$enable_debug" = xtrue ; then
+  makeDebug=yes
+  AC_DEFINE([DEBUG],1,[Define if printing DEBUG tables.])
+fi
+
 # Build optional demo in directory ./X11/Xaw/
 AC_ARG_ENABLE([Xaw],
   [AS_HELP_STRING([--enable-Xaw],
@@ -47,6 +58,7 @@ Configuration:
   Build code location	${builddir}
   Destination prefix	${prefix}
   Build extra Xaw demo	${enable_Xaw} ${makeXaw}
+  print DEBUG info	${makeDebug}
   Compiler		${CC}
   Config CFLAGS		"${CFLAGS}"
 

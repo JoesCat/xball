@@ -40,7 +40,7 @@ items_type items;
     items__destroy_all( items);
 
     list__destroy( items->list);
-    
+
     free( items);
 }
 
@@ -225,12 +225,11 @@ items_type items;
 {
     int i;
 
-
     for (i = 0; i < list__get_count( items->list); i++)
     {
         printf("%4d: ", i);
         item__print( (item_type)list__get_cell(items->list, i));
     }
-}  
+}
 
 #endif

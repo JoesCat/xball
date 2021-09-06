@@ -31,7 +31,6 @@ table_type table__create()
 {
     table_type table = (table_type)malloc( sizeof(table_struct_type));
 
-
     table->list = list__create();
 
     return table;
@@ -43,7 +42,6 @@ void table__destroy( table)
 table_type table;
 {
     table_node_type table_node;
-
 
     while ((table_node = 
             (table_node_type)list__remove_last(table->list)) != 
@@ -70,7 +68,6 @@ void *     data;
     table_node->key = my_strdup( key);
     table_node->data = data;
 
-
     list__add_end( table->list, (void *)table_node);
 }
 
@@ -81,7 +78,6 @@ table_type table;
 char *     key;
 {
     table_node_type table_node;
-
 
     for (table_node = (table_node_type)list__get_first( table->list);
          table_node != (table_node_type)0;
@@ -102,13 +98,13 @@ table_type table;
 {
     table_node_type table_node;
 
-
     for (table_node = (table_node_type)list__get_first( table->list);
          table_node != (table_node_type)0;
          table_node = (table_node_type)list__get_next( table->list))
     {
         printf("key = %s\n", table_node->key);
     }
+    printf("------\n");
 }
-        
+
 #endif

@@ -31,6 +31,9 @@ void       items__move_items(/* items, room*/);
 void       items__move_items_backwards(/* items, room, count*/);
 void       items__rebound_items(/* items, item*/);
 void       items__set_visible( /*items, visible*/);
+#ifdef DEBUG
+void       items__print(/* items */);
+#endif
 
 /* Inline functions */
 #define items__get_count( items) (list__get_count((items)->list))

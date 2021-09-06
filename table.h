@@ -23,6 +23,9 @@ table_type table__create();
 void       table__destroy(/* table */);
 void       table__store(/* table, key, data */);
 void *     table__retrieve(/* table, key */);
+#ifdef DEBUG
+void       table__dump(/* table */);
+#endif
 
 
 #endif

@@ -764,12 +764,10 @@ Pixel background;
 item__print( item)
 item_type item;
 {
-  printf("x,y_pos: %4d,%4d; x,y_vel: %4d,%4d, collide = %d\n",
+    printf("x,y_pos: %4d,%4d; x,y_vel: %4d,%4d, collide = %d\n",
          item__get_x( item), item__get_y( item),
          item__get_x_vel( item), item__get_y_vel( item),
          (int)static_data->ball_collide);
-
 }
 
 #endif
-

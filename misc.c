@@ -13,7 +13,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include "misc.h"
 
 /* Given a string 'text\nmore text', allocates and returns the
    string before the newline. */
@@ -49,8 +49,8 @@ char *str;
 
 
 /* Return a random value in the specified range */
-long rand_range( min, max)
-long min, max;
+int rand_range( min, max)
+int min, max;
 {
     if (min == max)
         return min;

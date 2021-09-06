@@ -11,8 +11,6 @@
 #ifndef __MISC_H__
 #define __MISC_H__
 
-#include <malloc.h>
-
 char * get_string(/* char *str */);
 char * my_strdup(/* char *str */);
 int    rand_range(/* min, max*/);
@@ -30,6 +28,5 @@ void   convert_newlines(/* str*/);
 #define EXIT_FAILURE (int)1
 #define EXIT_SUCCESS (int)0
 #endif
-
 
 #endif

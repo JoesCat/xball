@@ -143,7 +143,6 @@ caddr_t          user_data;
 {
     /* Store available callback into table */
     menuCallback *menu_node = XtNew( menuCallback);
-    
 
     menu_node->name    = my_strdup( action_name);
     menu_node->proc    = menu_callback_proc;
@@ -177,8 +176,8 @@ menu_type        menu;
 char            *widget_name;
 {
     Widget w = get_menu_widget( menu, widget_name);
-    
-    
+
+
     if (w == (Widget)0)
       return False;
 
@@ -239,6 +238,9 @@ caddr_t * call_data;
 
     /* Get data passed when callback was referenced in menu configuration */
     closure = (closure_type *)table__retrieve( menu->closure_table, XtName(w));
+#ifdef DEBUG
+    table__dump( menu->closure_table);
+#endif
 
 
     if (closure == (closure_type *)0)
@@ -261,10 +263,13 @@ caddr_t * call_data;
       /* Non-toggle button - just put any value there */
       menu_cbs.set = True;
 
-        
+
     /* Get the callback information stored when the callback was registered */
     mc_node = (menuCallback *)table__retrieve( menu->mc_table, 
                                                closure->menu_callback_name);
+#ifdef DEBUG
+    table__dump( menu->mc_table);
+#endif
 
     if (mc_node == (menuCallback *)0)
     {
@@ -705,7 +710,7 @@ Cardinal num_params;
 
     if (w == (Widget)0)
       return;
-    
+
     menu_callback( w, menu, NULL);
 }
 

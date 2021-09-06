@@ -65,14 +65,14 @@ nodist_DEMOS = demo1.xball demo2.xball demo3.xball demo4.xball demo5.xball \
 dist_DEMOS = demo7.xball demo8.xball demo9.xball demo10.xball demo11.xball
 
 IMAGES = xball-a.xbm xball-b.xbm xball-l.xbm xball.xbm xball-x.xbm \
-	man.xbm off.xbm on.xbm sgi.xbm
+	man.xbm sgi.xbm
 
 demosdir = ${datarootdir}/xball
 demos_DATA = ${dist_DEMOS} ${nodist_DEMOS} ${IMAGES}
 
 EXTRA_DIST = run_demos.in ${dist_DEMOS} ${dist_DEMOSin} ${IMAGES} \
 	act_area.c bootstrap filemenu.c gen_fallback good_bitmaps \
-	stipple.xbm XBall.ad xball.6 ${noinst_HEADERS}
+	stipple.xbm XBall.ad xball.6 ${noinst_HEADERS} off.xbm on.xbm
 
 MOSTLYCLEANFILES = run_demos
 DISTCLEANFILES = run_demos
