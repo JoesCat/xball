@@ -354,12 +354,11 @@ XBall.startupHelp: \
  parameters
 
 XBall.aboutString: \
-XBall Version 0.3.0~~\
-  April 1993~~\
+XBall Version 3.1.0 August 2021~~\
 The Premire Ball Bouncing Software~~\
   Allows you to throw 3-D balls around in a 2-D space.~~\
 Author (Send bugs, comments, and interesting demos to):~\
-  David Nedde~\
+  David Nedde (XBall Version 0.3.0 April 1993)~\
   daven@ivy.wpi.edu~\
   Computer Science Department~\
   Worcester Polytechnic Institute~\
@@ -385,12 +384,12 @@ provided \"as is\" without express or implied warranty. \
 ! Note that the pulldownName of 'help' is automatically used as the help 
 ! pulldown.
 !
-! Avaliable WidgetClasses are:
+! Available WidgetClasses are:
 !   PushButton   - push it and cause the action
 !   ToggleButton - Push it and toggle the state
 !   Separator    - A line in the menu
 !
-! Avaliable menuCallbackNames available (none take optional parameters):
+! Available menuCallbackNames available (none take optional parameters):
 !   runDemo       - Lets user select a demo and run the demo
 !   loadBitmap    - Lets user load a bitmap file
 !   quit          - quits xball program

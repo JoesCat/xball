@@ -29,6 +29,7 @@
   <update_contact>packages@qa.debian.org</update_contact>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release date="2021-08-23" version="3.1.0"/>
     <release date="2017-09-18" version="3.0.1-2"/>
   </releases>
   <project_license>ISC</project_license>

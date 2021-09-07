@@ -4,8 +4,10 @@ SUBDIRS = desktop X11/Xaw_d
 
 man_MANS = xball.6
 
-bin_PROGRAMS = xball
+fallback.h:
+	$(srcdir)/gen_fallback $(srcdir)/XBall.ad > fallback.h
 
+bin_PROGRAMS = xball
 xball_SOURCES = xball.c color_l.c demo.c file_sel.c sim.c \
 	help.c item.c items.c list.c menu.c misc.c miscx.c room.c \
 	table.c xball_sys.c scrollbar.c
@@ -13,6 +15,7 @@ noinst_HEADERS = act_area.h color_l.h demo.h fallback.h file_sel.h \
 	help.h intf.h item.h items.h list.h menu.h misc.h miscx.h \
 	names.h patchlevel.h room.h scrollbar.h sim.h table.h \
 	xball_sys.h
+xball.$(OBJEXT): $(noinst_HEADERS)
 
 xball_LDADD = -L/usr/X11R6/lib -lXm -lXmu -lXt -lX11
 
