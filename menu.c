@@ -14,6 +14,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <ctype.h>      /* For isspace */
+#include <malloc.h>     /* For free */
 
 #include <X11/StringDefs.h>
 #include <X11/Intrinsic.h>
@@ -105,8 +106,8 @@ Widget form;
 
     create_menubar( menu, form, "menuBar");
 
-    XtGetApplicationResources(get_toplevel(form), (XtPointer)&res_data, 
-                              resources, XtNumber(resources), 
+    XtGetApplicationResources(get_toplevel(form), (XtPointer)&res_data,
+                              resources, XtNumber(resources),
                               (ArgList)NULL,(Cardinal)0);
 
 
@@ -215,7 +216,7 @@ char *    widget_name;
 
     if (w == (Widget)0)
     {
-        fprintf(stderr,"get_menu_widget: Cannot find menu widget '%s'\n", 
+        fprintf(stderr,"get_menu_widget: Cannot find menu widget '%s'\n",
 		widget_name);
     }
 
@@ -265,7 +266,7 @@ caddr_t * call_data;
 
 
     /* Get the callback information stored when the callback was registered */
-    mc_node = (menuCallback *)table__retrieve( menu->mc_table, 
+    mc_node = (menuCallback *)table__retrieve( menu->mc_table,
                                                closure->menu_callback_name);
 #ifdef DEBUG
     table__dump( menu->mc_table);
@@ -273,7 +274,7 @@ caddr_t * call_data;
 
     if (mc_node == (menuCallback *)0)
     {
-        fprintf(stderr,"Cannot find menu callback '%s'\n", 
+        fprintf(stderr,"Cannot find menu callback '%s'\n",
                 closure->menu_callback_name);
         return;
     }
@@ -286,7 +287,7 @@ caddr_t * call_data;
 /**********************************************************************
  * Menu config text format:
  *
- *   XBall.menu: 
+ *   XBall.menu:
  *     pulldownName~
  *     widgetName,widgetClass,menuCallbackName,optionalParams...~
  *       .
@@ -321,8 +322,8 @@ char *    menu_def;
         /*next_pt = strpbrk( curr_pt, "\"{}");*/
 
         /* Search for first non-space */
-        for (next_pt = curr_pt; 
-             next_pt != '\0' && isspace( *next_pt); 
+        for (next_pt = curr_pt;
+             next_pt != '\0' && isspace( *next_pt);
              next_pt++)
             /* Do nothing*/;
 
@@ -351,7 +352,7 @@ char *    menu_def;
 
                 sprintf(pull_down_name, "%sPullDown", menu_button_name);
 
-		pull_down = create_pulldown( menubar, menu_button_name, 
+		pull_down = create_pulldown( menubar, menu_button_name,
 					     pull_down_name);
 
                 free( menu_button_name);
@@ -400,7 +401,7 @@ char *    menu_def;
 #endif
                 }
 
-                button = XtCreateManagedWidget( w_name, *w_class_p, pull_down, 
+                button = XtCreateManagedWidget( w_name, *w_class_p, pull_down,
                                                 args, n);
 
                 if (callback != (char *)0)
@@ -488,9 +489,9 @@ char * pull_down_name;
 
     pull_down = XmCreatePulldownMenu( menubar, pull_down_name, NULL, 0);
 
-    button = 
-        XtVaCreateManagedWidget( menu_button_name, xmCascadeButtonWidgetClass, 
-				 menubar, 
+    button =
+        XtVaCreateManagedWidget( menu_button_name, xmCascadeButtonWidgetClass,
+				 menubar,
 				 XmNsubMenuId, pull_down,
 				 NULL);
 
@@ -557,17 +558,17 @@ char *    name;
     XtActionsRec  action;
 
 
-    menu->menubar = 
+    menu->menubar =
         XtVaCreateManagedWidget( name, boxWidgetClass, form,
                                  XtNorientation, XtorientHorizontal,
                                  XtNresizable,   True,
                                  NULL);
 
-    menu->off_bitmap = 
+    menu->off_bitmap =
         XCreateBitmapFromData( XtDisplay( form),
                                RootWindowOfScreen( XtScreen( form)),
                                off_bits, off_width, off_height);
-    menu->on_bitmap = 
+    menu->on_bitmap =
         XCreateBitmapFromData( XtDisplay( form),
                                RootWindowOfScreen( XtScreen( form)),
                                on_bits, on_width, on_height);
@@ -636,10 +637,10 @@ char * pull_down_name;
     Widget pull_down;
 
 
-    button = XtVaCreateManagedWidget( menu_button_name, menuButtonWidgetClass, 
+    button = XtVaCreateManagedWidget( menu_button_name, menuButtonWidgetClass,
 				      menubar, NULL);
 
-    pull_down = XtCreatePopupShell( "menu", simpleMenuWidgetClass, button, 
+    pull_down = XtCreatePopupShell( "menu", simpleMenuWidgetClass, button,
 				    NULL, 0);
 
     return pull_down;

@@ -15,6 +15,7 @@
 #include "names.h"
 
 /* System Headers */
+#include <malloc.h>
 #include <X11/Intrinsic.h>
 #include <X11/StringDefs.h>
 #include <sys/time.h>
@@ -60,8 +61,8 @@ demo_type  demo;
     sim->room  = room;
     sim->demo  = demo;
 
-    XtGetApplicationResources(w, (XtPointer)&res_data, 
-                              resources, XtNumber(resources), 
+    XtGetApplicationResources(w, (XtPointer)&res_data,
+                              resources, XtNumber(resources),
                               (ArgList)NULL,(Cardinal)0);
 
     sim->step_simulation = False;
@@ -139,7 +140,7 @@ sim_type sim;
         demo__process( sim->demo);
 
     /* Delay */
-    delay(); 
+    delay();
 
     items__move_items( sim->items, room);
 

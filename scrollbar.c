@@ -25,6 +25,8 @@
 #include <X11/Xaw/Form.h>
 #endif
 
+#include <malloc.h>
+
 /* Local headers */
 #include "scrollbar.h"
 #include "misc.h"
@@ -105,7 +107,6 @@ XtCallbackProc proc;
 XtPointer      closure;
 {
     callback_node *node_ptr = (callback_node *)malloc( sizeof( callback_node));
-    
 
     node_ptr->proc    = proc;
     node_ptr->closure = closure;
@@ -135,7 +136,7 @@ int            value;
     for (i = 0; i < list__get_count( scrollbar->callbacks); i++)
     {
         node_ptr = (callback_node *)list__get_cell( scrollbar->callbacks, i);
-        (*node_ptr->proc)( scrollbar->scale, node_ptr->closure, 
+        (*node_ptr->proc)( scrollbar->scale, node_ptr->closure,
                            &scrollbar_call_data);
     }
 }
@@ -150,7 +151,7 @@ Widget         w;
 scrollbar_type scrollbar;
 caddr_t        call_data;
 {
-    call_callbacks( scrollbar, 
+    call_callbacks( scrollbar,
 		    ((XmScaleCallbackStruct *)call_data)->value);
 }
 
@@ -189,21 +190,21 @@ char *         name;
     scrollbar->form =
         XtVaCreateManagedWidget(name, xmFormWidgetClass, parent,
                                 NULL);
-        
-    scrollbar->label = 
+
+    scrollbar->label =
         XtVaCreateManagedWidget("label", xmLabelWidgetClass, scrollbar->form,
                                 NULL);
-    scrollbar->scale = 
-        XtVaCreateManagedWidget("bar", xmScaleWidgetClass, scrollbar->form, 
+    scrollbar->scale =
+        XtVaCreateManagedWidget("bar", xmScaleWidgetClass, scrollbar->form,
                                 XmNleftAttachment, XmATTACH_WIDGET,
                                 XmNleftWidget,     scrollbar->label,
                                 NULL);
 
     XmScaleGetValue( scrollbar->scale, &scrollbar->value);
 
-    XtAddCallback( scrollbar->scale, XmNvalueChangedCallback, 
+    XtAddCallback( scrollbar->scale, XmNvalueChangedCallback,
                    scrollbar_callback, (XtPointer)scrollbar);
-    XtAddCallback( scrollbar->scale, XmNdragCallback, 
+    XtAddCallback( scrollbar->scale, XmNdragCallback,
                    scrollbar_callback, (XtPointer)scrollbar);
 }
 
@@ -239,7 +240,7 @@ XtPointer      position_ptr;
     float         thumb;
     float         shown;
     int           position = (int)position_ptr;
-    float         change; /* 0.0 .. 1.0 - percentage of full-page change 
+    float         change; /* 0.0 .. 1.0 - percentage of full-page change
                              we should do */
 
 
@@ -247,7 +248,7 @@ XtPointer      position_ptr;
        Position > 0 indicates button 1, position < 0 indicates button 3 */
 
 
-    XtVaGetValues( scrollbar->scale, 
+    XtVaGetValues( scrollbar->scale,
                    XtNlength,     &length,
                    XtNtopOfThumb, &thumb,
                    XtNshown,      &shown,
@@ -273,7 +274,7 @@ float *        percent_ptr;
     float shown;
     float thumb = *percent_ptr;
 
-    XtVaGetValues( scrollbar->scale, 
+    XtVaGetValues( scrollbar->scale,
                    XtNshown,      &shown,
                    NULL);
 
@@ -337,9 +338,8 @@ int value;
     XtVaGetValues( scrollbar->scale, XtNshown, &shown, NULL);
 
     /* Set the thumb to the new position */
-    XawScrollbarSetThumb( scrollbar->scale, 
+    XawScrollbarSetThumb( scrollbar->scale,
                           value_to_thumb( value, shown), -1.0);
-             
 
     set_feedback_value( scrollbar, value);
 }
@@ -364,7 +364,6 @@ int    value;
 
     sprintf(buff,"%d", value);
 
-
     XtVaSetValues( label_w, XtNlabel, buff, NULL);
 }
 
@@ -377,19 +376,19 @@ char *         name;
 {
     scrollbar->form = XtVaCreateWidget(name, formWidgetClass, parent, NULL);
 
-    scrollbar->label = 
+    scrollbar->label =
         XtVaCreateManagedWidget("label", labelWidgetClass, scrollbar->form,
                                 NULL);
 
-    scrollbar->feedback = 
+    scrollbar->feedback =
         XtVaCreateManagedWidget("feedback",
                                 labelWidgetClass, scrollbar->form,
                                 XtNfromHoriz, scrollbar->label,
                                 NULL);
 
-    scrollbar->scale = 
+    scrollbar->scale =
         XtVaCreateManagedWidget("bar",
-                                scrollbarWidgetClass, scrollbar->form, 
+                                scrollbarWidgetClass, scrollbar->form,
                                 XtNfromVert,  scrollbar->label,
                                 XtNfromHoriz, scrollbar->label,
                                 NULL);
@@ -398,9 +397,9 @@ char *         name;
 
     set_feedback_value( scrollbar, scrollbar->value);
 
-    XtAddCallback( scrollbar->scale, XtNscrollProc, 
+    XtAddCallback( scrollbar->scale, XtNscrollProc,
                    scrollbar_scroll_callback, (XtPointer)scrollbar);
-    XtAddCallback( scrollbar->scale, XtNjumpProc, 
+    XtAddCallback( scrollbar->scale, XtNjumpProc,
                    scrollbar_jump_callback, (XtPointer)scrollbar);
 
     XtManageChild( scrollbar->form);

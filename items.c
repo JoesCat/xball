@@ -10,6 +10,7 @@
  **********************************************************************/
 
 /* System Headers */
+#include <malloc.h>
 #include <string.h>
 
 /* Local headers */
@@ -107,7 +108,7 @@ room_type room;
 
     /* Move each item on the screen */
     for (items->current = 0;
-	 items->current < list__get_count( items->list); 
+	 items->current < list__get_count( items->list);
          items->current++)
     {
         item = (item_type)list__get_cell(items->list, items->current);
@@ -138,7 +139,7 @@ int count;
 
     /* Reverse all items' velocities and erase them from the screen */
     for (items->current = 0;
-         items->current < list__get_count( items->list); 
+         items->current < list__get_count( items->list);
          items->current++)
     {
         item = (item_type)list__get_cell(items->list, items->current);
@@ -154,7 +155,7 @@ int count;
     {
         /* Move each item on the screen */
         for (items->current = 0;
-             items->current < list__get_count( items->list); 
+             items->current < list__get_count( items->list);
              items->current++)
         {
             item = (item_type)list__get_cell(items->list, items->current);
@@ -166,7 +167,7 @@ int count;
 
     /* Reverse all the items' velocities again and draw them */
     for (items->current = 0;
-         items->current < list__get_count( items->list); 
+         items->current < list__get_count( items->list);
          items->current++)
     {
         item = (item_type)list__get_cell(items->list, items->current);
@@ -189,7 +190,7 @@ Bool       visible;
         item__set_visible( True);
 
     for (items->current = 0;
-         items->current < list__get_count( items->list); 
+         items->current < list__get_count( items->list);
          items->current++)
     {
         if (visible)
@@ -212,7 +213,7 @@ items_type items;
 
     for (i = items->current+1; i < list__get_count( items->list); i++)
     {
-        item__rebound_item(item, 
+        item__rebound_item(item,
                            (item_type)list__get_cell(items->list, i));
     }
 }
