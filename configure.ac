@@ -1,6 +1,8 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
+# Copyright (C) 2021 by Joe Da Silva
+
 AC_PREREQ(2.61)
 
 m4_define([xball_version], [3.1.0])
@@ -11,6 +13,7 @@ AC_DEFINE(MOTIF, HAVE_MOTIF)
 AC_SUBST([XBALL_VERSION],[xball_version])
 AC_PROG_CC
 AC_PROG_RANLIB
+AC_CHECK_TOOL([VALGRIND],[valgrind],[:])
 AC_PROG_INSTALL
 
 # Required development include files (and associated libraries)
@@ -46,9 +49,11 @@ if test "x$enable_Xaw" != xno ; then
 fi
 AM_CONDITIONAL([ADD_DEMOXAW],[test x${makeXaw} = xyes])
 
+AM_CONDITIONAL([HAVEVALGRIND],[test "${VALGRIND}"x != x])
+
 #update-mime-database /usr/local/share/mime/
 
-AC_CONFIG_FILES([Makefile xball.pc desktop/Makefile X11/Xaw_d/Makefile])
+AC_CONFIG_FILES([Makefile xball.pc desktop/Makefile X11/Xaw_d/Makefile tests/Makefile])
 AC_OUTPUT
 AC_MSG_NOTICE([
 

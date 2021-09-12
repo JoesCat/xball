@@ -1,6 +1,8 @@
 ## IMPORTANT - If you change this file, run the bootstrap script again
 
-SUBDIRS = desktop X11/Xaw_d
+SUBDIRS = . desktop X11/Xaw_d tests
+
+#test_programs = list-tests
 
 man_MANS = xball.6
 
@@ -91,3 +93,11 @@ distclean-local:
 	-rm -rf autom4te.cache
 	-rm -rf .deps
 	-rm -rf ${nodist_DEMOS}
+
+check-valgrind:
+if HAVEVALGRIND
+	$(MAKE);
+	$(VALGRIND) --error-exitcode=1 $(builddir)/tests/list-tests
+else
+	echo "install Valgrind, then run ./configure again"
+endif

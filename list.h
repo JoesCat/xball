@@ -19,8 +19,6 @@ typedef struct {
     int         curr_item;
 } list_struct, *list_type;
 
-#define LIST_INITIAL_SIZE 100
-
 list_type       list__create();
 void            list__destroy(/* list */);
 void *          list__add_start(/* list, data_item */);
@@ -31,13 +29,11 @@ void *          list__get_last(/* list */);
 void *          list__get_prev(/* list */);
 void *          list__remove_last(/* list */);
 void *          list__remove_first(/* list */);
-void            list__remove_all(/* list */);
+void *          list__remove_curr(/* list */);
 void *          list__remove(/* list, index */);
 
 /* Inline functions */
-#define list__get_cell(list, index) ((list)->data[ index])
-#define list__set_cell(list, index) ((list)->data[ index])
+#define list__get_cell(list, index) ((list)->data[index])
 #define list__get_count(list) ((list)->count)
-
 
 #endif
