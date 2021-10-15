@@ -22,6 +22,14 @@ AC_CHECK_HEADER([X11/Intrinsic.h],[],[AC_MSG_FAILURE([ERROR: Missing X11/Intrins
 AC_CHECK_HEADER([Xm/Xm.h],[],[AC_MSG_FAILURE([ERROR: Missing Xm/Xmu.h, Please install Developer version of libxmotif-devel or lib64motif-devel],[1])])
 AC_CHECK_HEADER([X11/Xmu/Converters.h],[],[AC_MSG_FAILURE([ERROR: Missing X11/Xmu/Converters.h, Please install Developer version of libxmu-devel or lib64xmu-devel],[1])])
 
+# secondary site RGB.TXT location
+secondaryRGB="/usr/share/X11/rgb.txt"
+AC_ARG_ENABLE([RGB2],
+  [AS_HELP_STRING([--enable-RGB2=FILE],
+    [Load /etc/rgb.txt else try @<:@/usr/share/X11/rgb.txt@:>@])],
+  [],[enable_RGB2=secondaryRGB])
+AC_SUBST([LOC_RGB2_TXT],["${secondaryRGB}"])
+
 # Enable debug mode
 AC_ARG_ENABLE([debug],
   [AS_HELP_STRING([--enable-debug],
@@ -62,6 +70,7 @@ Configuration:
   Source code location	${srcdir}
   Build code location	${builddir}
   Destination prefix	${prefix}
+  "/etc/rgb.txt" or try	"${LOC_RGB2_TXT}"
   Build extra Xaw demo	${enable_Xaw} ${makeXaw}
   print DEBUG info	${makeDebug}
   Compiler		${CC}

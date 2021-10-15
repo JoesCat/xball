@@ -2,12 +2,14 @@
 
 SUBDIRS = . desktop X11/Xaw_d tests
 
-#test_programs = list-tests
-
 man_MANS = xball.6
 
 fallback.h:
 	$(srcdir)/gen_fallback $(srcdir)/XBall.ad > fallback.h
+
+rgbtxt_loc.h:
+	echo '/* NOTE: This file is generated! */' > rgbtxt_loc.h
+	echo '#define RGB2_TXT "$(LOC_RGB2_TXT)"' >> rgbtxt_loc.h
 
 bin_PROGRAMS = xball
 xball_SOURCES = xball.c color_l.c demo.c file_sel.c sim.c \
@@ -17,7 +19,7 @@ noinst_HEADERS = act_area.h color_l.h demo.h fallback.h file_sel.h \
 	help.h intf.h item.h items.h list.h menu.h misc.h miscx.h \
 	names.h patchlevel.h room.h scrollbar.h sim.h table.h \
 	xball_sys.h
-xball.$(OBJEXT): $(noinst_HEADERS)
+xball.$(OBJEXT): $(noinst_HEADERS) rgbtxt_loc.h
 
 xball_LDADD = -L/usr/X11R6/lib -lXm -lXmu -lXt -lX11
 
@@ -79,20 +81,20 @@ EXTRA_DIST = run_demos.in ${dist_DEMOS} ${dist_DEMOSin} ${IMAGES} \
 	act_area.c bootstrap filemenu.c gen_fallback good_bitmaps \
 	stipple.xbm XBall.ad xball.6 ${noinst_HEADERS} off.xbm on.xbm
 
-MOSTLYCLEANFILES = run_demos
-DISTCLEANFILES = run_demos
+MOSTLYCLEANFILES = run_demos rgbtxt_loc.h
+DISTCLEANFILES = run_demos rgbtxt_loc.h
 
 uninstall-hook:
 	if test -d ${datarootdir}/xball; then rmdir ${datarootdir}/xball; fi
 
 clean-local:
-	-rm -rf run_demos ${nodist_DEMOS}
+	-rm -rf run_demos ${nodist_DEMOS} rgbtxt_loc.h
 
 distclean-local:
 	-rm *~
 	-rm -rf autom4te.cache
 	-rm -rf .deps
-	-rm -rf ${nodist_DEMOS}
+	-rm -rf ${nodist_DEMOS} rgbtxt_loc.h
 
 check-valgrind:
 if HAVEVALGRIND

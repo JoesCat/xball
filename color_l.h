@@ -35,7 +35,9 @@ color_type      color_list__remove(/* color_list, index*/);
 int             color_list__get_count(/* color_list*/);
 color_type      color_list__get_last(/* color_list*/);
 color_type      color_list__get_prev(/* color_list*/);
+#ifdef NOT_USED
 char *          color__get_shade(/* color, shade_num*/);
+#endif
 
 /* Inline functions */
 #define color_list__get_cell(list, index) \
