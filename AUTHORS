@@ -1,7 +1,12 @@
-Xball Authors
+Xball Authors - Changelog holds information on many AUTHORS, but here's a quick summary:
 
 xball: David Nedde <deven@ivy.wpi.edu>
 act_area.c: Written by Dan Heller
 filemenu.c: Po Cheung
-Debian Packaging, 2004apr29: Stephen Birch <sgbirch@imsmail.org>
-automake Package, 2021aug23: Joe Da Silva <digital@joescat.com>
+2004apr29: Stephen Birch <sgbirch@imsmail.org>, Debian packaging, and lots of bug fixes.
+2006jul13: Margarita Manterola <marga@debian.org>, common references to etc/X11/rgb.txt.
+2010may08: Jari Aalto <jari.aalto@cante.net> update xutils file dependencies. Bug fixes.
+2013sep14: Luk Claes <luk@debian.org> transition from lesstif2 to motif. More bug fixes.
+2017sep13: Markus Koschany <apo@debian.org>, add patch by Piotr Sokołowski plus several
+           bugfixes and improvements.
+2021aug23: Joe Da Silva <digital@joescat.com>, automake Package, all sorts of bug fixes.
