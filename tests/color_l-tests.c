@@ -37,8 +37,8 @@ static int fun_color_l(void) {
     list_type list;
     int c;
 
-    printf("Load '/etc/X11/rgb.txt' file.\n");
-    color_list = color_list__create("/etc/X11/rgb.txt");
+    printf("Load '%s' file.\n", RGB1_TXT);
+    color_list = color_list__create(RGB2_TXT);
     if (!color_list) {
 	printf("  error - Try load secondary-site '%s' file.\n", RGB2_TXT);
 	color_list = color_list__create(RGB2_TXT);

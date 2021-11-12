@@ -19,7 +19,7 @@ XBall.perpetual:      False
 XBall.haltSim:        False
 
 
-XBall.title: XBall - Written by David Nedde
+XBall.title: XBall
 
 XBall*form.horizontalSpacing:   2
 XBall*form.verticalSpacing:     2

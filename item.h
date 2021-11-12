@@ -36,12 +36,13 @@ typedef struct {
     Bool   perpetual;
     Bool   visible;
     char * rgb_txt;
+    char * rgb_txt2;
 
     Display * display;
     Window    window;
     Pixel     background;
     GC        gc;
-    Pixmap    pixmaps[ MAX_COLORS];/* Holds all item drawings */
+    Pixmap    pixmaps[MAX_COLORS]; /* Holds all item drawings */
     int       num_colors;          /* Holds number of colors/pixmaps used */
     int       curr_pixmap;         /* Holds pixmap index to use for next item*/
 } item_static_struct_type, *item_static_type;
@@ -72,8 +73,7 @@ void      item__redraw(/* item*/);
 void      item__erase(/* item*/);
 void      item__redraw(/* item*/);
 void      item__move_pos(/* item, x, y*/);
-void      item__randomize(/* item, min_x_vel, max_x_vel, 
-			     min_y_vel, max_y_vel*/);
+void      item__randomize(/* item, min_x_vel, max_x_vel, min_y_vel, max_y_vel*/);
 void      item__move(/* item, room, items*/);
 void      item__rebound_item(/* moved_item, fixed_item*/);
 void      item__set_elasticity_cb(/*w, datap_ptr, call_data*/);

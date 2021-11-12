@@ -9,6 +9,7 @@ fallback.h:
 
 rgbtxt_loc.h:
 	echo '/* NOTE: This file is generated! */' > rgbtxt_loc.h
+	echo '#define RGB1_TXT "$(LOC_RGB1_TXT)"' >> rgbtxt_loc.h
 	echo '#define RGB2_TXT "$(LOC_RGB2_TXT)"' >> rgbtxt_loc.h
 
 bin_PROGRAMS = xball

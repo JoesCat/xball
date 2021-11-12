@@ -18,6 +18,7 @@
 #endif
 
 /* Local headers */
+#include "rgbtxt_loc.h" /* RGB_TXT=rgb.txt file location(s) */
 #include "item.h"
 #include "room.h"
 #include "scrollbar.h"
@@ -30,9 +31,6 @@
 #define SHADES      4   /* Number of shades for colors in the rgb.txt file */
 #define ITEM_WIDTH  10  /* The item's default size */
 #define ITEM_HEIGHT 10
-#ifndef RGB_TXT
-#define RGB_TXT     "/usr/share/X11/rgb.txt"
-#endif
 
 /* put_pixmap - Draws the item's pixmap to the specified location */
 #define put_pixmap( item, x, y) \
@@ -54,6 +52,7 @@ typedef struct {
     int    item_width;
     int    item_height;
     char * rgb_txt;
+    char * rgb_txt2;
     int    elasticity;
 } app_data,*app_data_ptr;
 static app_data res_data;
@@ -63,7 +62,9 @@ static XtResource resources[] = {
     { "itemHeight", "ItemHeight", XtRInt, sizeof(int),
         XtOffset(app_data_ptr,item_height),XtRImmediate, (caddr_t)ITEM_HEIGHT},
     { "rgbTxt", "RgbTxt", XtRString, sizeof(char *),
-	XtOffset(app_data_ptr,rgb_txt), XtRString, RGB_TXT}
+        XtOffset(app_data_ptr,rgb_txt), XtRString, RGB1_TXT},
+    { "rgbTxt2", "RgbTxt2", XtRString, sizeof(char *),
+        XtOffset(app_data_ptr,rgb_txt2), XtRString, RGB2_TXT}
 };
 
 /* Functions */
@@ -128,21 +129,16 @@ int y_vel;
 
 
 /* Initializes the item's static data.  This can only be done once
-   there is a window, sice we have to get the background color.  Thus, we
-   are called from room's first refresh callback */
-void item__init(toplevel, display, window, background)
-Widget    toplevel;
-Display * display;
-Window    window;
-Pixel     background;
-{
-    static_data = static_data__create( toplevel, display, window, background);
-    static_data_initted = True;
+   there is a window since we have to get the background color.
+   Thus, we are called from room's first refresh callback */
+void item__init(Widget toplevel, Display * display, Window window, Pixel background) {
+    static_data = static_data__create(toplevel, display, window, background);
+    if (!static_data)
+        static_data_initted = True;
 }
 
 /* Returns true of the item's static data is initialized */
-Bool item__initted()
-{
+Bool item__initted() {
     return static_data_initted;
 }
 
@@ -168,7 +164,7 @@ item_type item;
         item->shown = True;
     }
 }
-    
+
 
 /* Erases the item from the screen */
 
@@ -185,7 +181,7 @@ intf      x,y;
 
 
 /* Redraws the item on the screen, regardless of whether it is shown.
-   This method shoulw be used when the window has to be refreshed. 
+   This method should be used when the window has to be refreshed.
    invisible items will not be drawn. */
 void item__redraw( item)
 item_type item;
@@ -196,7 +192,7 @@ item_type item;
         item->shown = True;
     }
 }
-    
+
 
 /* Move an item's image to a new location */
 void item__move_pos( item, x, y)
@@ -490,14 +486,10 @@ Bool visible;
 /* Private object methods */
 
 /* Load items resources */
-static void get_resources( toplevel, display, window, background)
-Widget   toplevel;
-Display *display;
-Window   window;
-Pixel    background;
-{
-    XtGetApplicationResources(toplevel, (XtPointer)&res_data, 
-                              resources, XtNumber(resources), 
+static void get_resources(
+       Widget toplevel, Display *display, Window window, Pixel background) {
+    XtGetApplicationResources(toplevel, (XtPointer)&res_data,
+                              resources, XtNumber(resources),
                               (ArgList)NULL,(Cardinal)0);
 
     static_data->width       = res_data.item_width;
@@ -505,26 +497,21 @@ Pixel    background;
     static_data->half_width  = static_data->width  / 2;
     static_data->half_height = static_data->height / 2;
     static_data->rgb_txt     = res_data.rgb_txt;
+    static_data->rgb_txt2    = res_data.rgb_txt2;
 }
 
 
 /* Initialize the item's static data object */
-static item_static_type static_data__create( toplevel, display, window, 
-                                             background)
-Widget    toplevel;
-Display * display;
-Window    window;
-Pixel     background;
-{
+static item_static_type static_data__create(
+       Widget toplevel, Display * display, Window window, Pixel background) {
     GC clear_gc;
-
 
     /* The following already set in xball_sys object:
        static_data->elasticity
        static_data->ball_collide
        static_data->perpetual */
 
-    get_resources( toplevel, display, window, background);
+    get_resources(toplevel, display, window, background);
 
     static_data->visible    = True;
     static_data->background = background;
@@ -537,17 +524,26 @@ Pixel     background;
     static_data->curr_pixmap = 0;
 
 
-    if (DisplayCells( display, DefaultScreen(display)) > 2)
-    {
+    if (DisplayCells(display, DefaultScreen(display)) > 2) {
         /* Non-monochrome system */
-        color_list_type color_list = color_list__create(static_data->rgb_txt);
-        color_type color;
-        Colormap colormap = DefaultColormap(display, DefaultScreen(display));
-        XColor   colors[ SHADES];     /* The color shades */
-        Pixel    cells[ SHADES];
-        int      pixmap_index;
-        int      shade;
+        color_list_type color_list;
+        color_type      color;
+        Colormap        colormap;
+        XColor          colors[SHADES]; /* The color shades */
+        Pixel           cells[SHADES];
+        int             pixmap_index;
+        int             shade;
 
+        color_list = color_list__create(static_data->rgb_txt);
+        if (!color_list) {
+            color_list = color_list__create(static_data->rgb_txt2);
+            if (!color_list) {
+                fprintf(stderr, "item::failed to get file rgbTxt1=%s\n", static_data->rgb_txt);
+                fprintf(stderr, "item::failed to get file rgbTxt2=%s\n", static_data->rgb_txt2);
+                return 0;
+            }
+        }
+        colormap = DefaultColormap(display, DefaultScreen(display));
 
         for (shade = 0; shade < SHADES; shade++)
             colors[ shade].flags = DoRed | DoGreen | DoBlue;
