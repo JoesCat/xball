@@ -69,14 +69,14 @@ static XtResource resources[] = {
 
 /* Functions */
 static item_static_type static_data__create(/*display, window, background*/);
-static void             draw_item(/* static_data, display, clear_gc, colors, 
+static void             draw_item(/* static_data, display, clear_gc, colors,
                                      pixmap, background*/);
-static void             draw_circle(/* display, pixmap, 
-				       x_offset, y_offset, 
-				       width, height*/);
+static void             draw_circle(/* display, pixmap,
+                                       x_offset, y_offset,
+                                       width, height*/);
 static void             draw_black_ball(/* display, background*/);
-static void             draw_ball(/* display, pixmap, x_offset, y_offset, 
-				   width, height*/);
+static void             draw_ball(/* display, pixmap, x_offset, y_offset,
+                                     width, height*/);
 
 
 /* Public object methods */
@@ -100,7 +100,7 @@ int y_vel;
     item->window  = static_data->window;
 
     /* Draw with the next available pixmap image (color) */
-    static_data->curr_pixmap = 
+    static_data->curr_pixmap =
         (static_data->curr_pixmap + 1) % static_data->num_colors;
 
     item->pixmap = static_data->pixmaps[ static_data->curr_pixmap];
@@ -117,9 +117,9 @@ int y_vel;
 
     item__draw( item);
 
-#if 0
+#ifdef DEBUG
     /* To generate demos */
-    printf("create %d,%d,%d,%d\n", 
+    printf("create x=%d, y=%d, x_vel=%d, y_vel=%d\n",
            intf2int(item->x),intf2int(item->y),
            intf2int(item->x_vel),intf2int(item->y_vel));
 #endif
@@ -158,8 +158,7 @@ item_type item;
 void item__draw( item)
 item_type item;
 {
-    if (!item->shown && item->static_data->visible)
-    {
+    if (!item->shown && item->static_data->visible) {
         put_pixmap( item, item->x, item->y);
         item->shown = True;
     }
@@ -172,8 +171,7 @@ void item__undraw( item, x, y)
 item_type item;
 intf      x,y;
 {
-    if (item->shown && item->static_data->visible)
-    {
+    if (item->shown && item->static_data->visible) {
         put_pixmap( item, x, y);
         item->shown = False;
     }
@@ -186,8 +184,7 @@ intf      x,y;
 void item__redraw( item)
 item_type item;
 {
-    if (item->static_data->visible)
-    {
+    if (item->static_data->visible) {
         put_pixmap( item, item->x, item->y);
         item->shown = True;
     }
@@ -237,8 +234,7 @@ items_type items;
 
     /* Calculate new y position */
     /* Gravity adds to velocity */
-    if ((item->y < room__get_floor( room)) || (item->y_vel != 0))
-    {
+    if ((item->y < room__get_floor(room)) || (item->y_vel != 0)) {
         item->y_vel += room__get_gravity( room);
     }
 
@@ -246,8 +242,7 @@ items_type items;
     /* Move vertically based on velocity */
     item->y += item->y_vel;
 
-    if (item->y >= room__get_floor( room))
-    {
+    if (item->y >= room__get_floor(room)) {
         /* item hit floor -- bounce off floor */
 
         /* Reverse ball velocity */
@@ -256,32 +251,28 @@ items_type items;
         item->y += item->y_vel;
 
         if (ABS(item->y_vel) < room__get_gravity(room))
-            /* This helps dampen rounding errors that cause balls to 
+            /* This helps dampen rounding errors that cause balls to
                bounce forever */
             item->y_vel = 0;
-        else
-        {
+        else {
             /* Ball velocity is reduced by the percentage elasticity */
             item->y_vel *= item->static_data->elasticity;
 #if 1
-            item->y = room__get_floor( room) - 
+            item->y = room__get_floor( room) -
                 (room__get_floor( room) - item->y) *
                     item->static_data->elasticity;
 #else
             item->y = -item->y + room__get_floor( room)*2;
 #endif
         }
-    }
-    else
-    if (item->y < room__get_ceiling( room))
-    {
+    } else if (item->y < room__get_ceiling(room)) {
         /* Reverse ball velocity */
         item->y_vel = -item->y_vel;
 
         /* Ball velocity is reduced by the percentage elasticity */
         item->y_vel *= item->static_data->elasticity;
 
-	/* Bounce off the wall */
+        /* Bounce off the wall */
         item->y = -item->y + room__get_ceiling( room)*2;
     }
 
@@ -290,8 +281,7 @@ items_type items;
     /* Move horizontally based on velocity */
     item->x += item->x_vel;
 
-    if (item->x > room__get_right_wall(room))
-    {
+    if (item->x > room__get_right_wall(room)) {
         /* Hit right wall */
         /* Reverse ball velocity */
         item->x_vel = -item->x_vel;
@@ -299,12 +289,9 @@ items_type items;
         /* Ball velocity is reduced by the percentage elasticity */
         item->x_vel *= item->static_data->elasticity;
 
-	/* Bounce off the wall */
+        /* Bounce off the wall */
         item->x = -item->x + room__get_right_wall( room)*2;
-    }
-    else
-    if (item->x < room__get_left_wall( room))
-    {
+    } else if (item->x < room__get_left_wall(room)) {
         /* Hit left wall */
         /* Reverse ball velocity */
         item->x_vel = -item->x_vel;
@@ -312,7 +299,7 @@ items_type items;
         /* Ball velocity is reduced by the percentage elasticity */
         item->x_vel *= item->static_data->elasticity;
 
-	/* Bounce off the wall */
+        /* Bounce off the wall */
         item->x = -item->x + room__get_left_wall( room)*2;
     }
 
@@ -325,12 +312,10 @@ items_type items;
 
 
     /* Collide with other balls or ball being created */
-    if (item->static_data->ball_collide)
-    {
+    if (item->static_data->ball_collide) {
         /* See if collided with the ball under the pointer being created */
         item_type room_item = room__get_item( room);
-        if (room_item != (item_type)0)
-        {
+        if (room_item != (item_type)0) {
             item__rebound_item(item, room_item);
         }
 
@@ -339,18 +324,13 @@ items_type items;
     }
 
     /* See if item has come to a peaceful rest */
-    if (item__stopped(item, room))
-    {
+    if (item__stopped(item, room)) {
         /* on floor && Not bouncing */
-        if (item->static_data->perpetual)
-        {
+        if (item->static_data->perpetual) {
             /* Just drop the ball from the ceiling */
             item->y = room__get_ceiling( room);
-        }
-        else
-        {
-            if (item__stopped( item, room))
-            {
+        } else {
+            if (item__stopped(item, room)) {
                 item__undraw( item, oldx, oldy);
                 return;       /* Don't draw item */
             }
@@ -362,8 +342,7 @@ items_type items;
     }
 
     /* If item moved, redraw it in the new position */
-    if ((item->y != oldy || item->x != oldx) && static_data->visible)
-    {
+    if ((item->y != oldy || item->x != oldx) && static_data->visible) {
         /* Erase old object */
         item__undraw( item, oldx, oldy);
         item__draw( item);
@@ -384,7 +363,7 @@ item_type fixed_item;
     xdiff = moved_item->x - fixed_item->x;
     ydiff = moved_item->y - fixed_item->y;
 
-    if (ABS(xdiff) < int2intf(moved_item->static_data->width) && 
+    if (ABS(xdiff) < int2intf(moved_item->static_data->width) &&
         ABS(ydiff) < int2intf(moved_item->static_data->height))
     {
         SWAP( moved_item->x_vel, fixed_item->x_vel, intf);
@@ -550,48 +529,52 @@ static item_static_type static_data__create(
 
         for (color = color_list__get_last( color_list), pixmap_index = 0;
              color != (color_type)0;
-             pixmap_index++)
-        {
-            if (!XAllocColorCells( display, colormap,     /*contig =*/True, 
-                                   /*plane_masks=*/NULL,  /*nplanes=*/0, 
-                                   /*pixels     =*/cells, /*ncolors=*/SHADES))
+             pixmap_index++) {
+            if (!XAllocColorCells(display, colormap,     /*contig =*/True,
+                                  /*plane_masks=*/NULL,  /*nplanes=*/0,
+                                  /*pixels     =*/cells, /*ncolors=*/SHADES)) {
+                /* If you are here, there is not enough colors, or XAllocColorCells
+                 * may be ignored by modern hardware. Most modern display cards are
+                 * now 24b or 32b color capable. These are TrueColor type cards. */
+		/* TODO: Create colored balls for TrueColor Type cards */
+#ifdef DEBUG
+                printf("Color pixmap is at %d, now running break).\n",pixmap_index);
+#endif
                 break;          /* All out of colors */
-
-            for (shade = SHADES-1; shade >= 0; shade--)
-            {
-	        colors[ shade].red   = color->r * 65535 / 255;
-		colors[ shade].green = color->g * 65535 / 255;
-		colors[ shade].blue  = color->b * 65535 / 255;
-                colors[ shade].pixel = cells[ shade];
-
-		color = color_list__get_prev( color_list);
             }
 
-	    if (shade == -1)
-	    {
-                XStoreColors( display, colormap, colors, SHADES);
-	    }
-	    else
-	    {
-	        /* Problem with color list */
-	        pixmap_index--;
-		XFreeColors( display, colormap, cells, SHADES, 
-			     /*nplanes=*/0);
-		break;
-	    }
+            for (shade = SHADES-1; shade >= 0; shade--) {
+                colors[ shade].red   = color->r * 65535 / 255;
+                colors[ shade].green = color->g * 65535 / 255;
+                colors[ shade].blue  = color->b * 65535 / 255;
+                colors[ shade].pixel = cells[ shade];
 
-            static_data->pixmaps[ pixmap_index] = 
+                color = color_list__get_prev(color_list);
+            }
+
+            if (shade == -1) {
+                XStoreColors( display, colormap, colors, SHADES);
+            } else {
+                /* Problem with color list */
+                pixmap_index--;
+                XFreeColors( display, colormap, cells, SHADES, /*nplanes=*/0);
+                break;
+            }
+
+            static_data->pixmaps[pixmap_index] =
                 XCreatePixmap(display, window,
                               static_data->width,static_data->height,
                               DefaultDepth(display, DefaultScreen(display)));
 
-	    /* Draw the item onto the pixmap */
-            draw_item(static_data, display, clear_gc, colors, 
+            /* Draw the item onto the pixmap */
+            draw_item(static_data, display, clear_gc, colors,
                       static_data->pixmaps[ pixmap_index], background);
         }
 
-	/* printf("Created %d different colored balls (%d possible).\n",
-	        pixmap_index, color_list__get_count( color_list) / 4); */
+#ifdef DEBUG
+        printf("Created %d different colored balls (%d possible).\n",
+                pixmap_index, color_list__get_count(color_list) / 4);
+#endif
 
         color_list__destroy( color_list);
 
@@ -600,10 +583,11 @@ static item_static_type static_data__create(
 
 
     if ((static_data->num_colors == 0) ||
-        (DisplayCells( display, DefaultScreen(display)) == 2))
-    {
-        /* Monochrome system or cannot allocate colors - 
-           just have 1 pixmap of a black ball */
+        (DisplayCells( display, DefaultScreen(display)) == 2)) {
+        /* Monochrome system or can't allocate colors - just have 1 pixmap of a black ball */
+#ifdef DEBUG
+        printf("Created monochrome ball.\n");
+#endif
         draw_black_ball( display, background);
     }
 
@@ -619,7 +603,7 @@ static item_static_type static_data__create(
 
 
 /* Draw an item in the passed colors on the passed pixmap */
-static void draw_item( static_data, display, clear_gc, colors, pixmap, 
+static void draw_item( static_data, display, clear_gc, colors, pixmap,
                        background)
 item_static_type static_data;
 Display         *display;
@@ -628,12 +612,10 @@ XColor          *colors;
 Pixmap           pixmap;
 Pixel            background;
 {
-    static struct
-    {
+    static struct {
         double x_offset, y_offset; /* The circle's offset on the item  */
         double width, height;      /* The width & height of the circle */
-    } offsets[SHADES-1] = 
-    {
+    } offsets[SHADES-1] = {
         0.2, 0.2, 0.3, 0.3,
         0.1, 0.1, 0.5, 0.5,
         0.0, 0.0, 0.8, 0.8
@@ -642,39 +624,38 @@ Pixel            background;
 
 
     /* Clear pixmap */
-    XFillRectangle(display, pixmap, clear_gc, 0, 0, 
-                   static_data->width, 
+    XFillRectangle(display, pixmap, clear_gc, 0, 0,
+                   static_data->width,
                    static_data->height);
 
-    XSetForeground( display, static_data->gc, 
+    XSetForeground(display, static_data->gc,
                     colors[SHADES-1].pixel ^ background);
     draw_circle(display, pixmap, static_data->gc,
-		0, 0, static_data->width-1, static_data->height-1);
+                0, 0, static_data->width-1, static_data->height-1);
 
     /* Draw the circles in the different shades.  Shade SHADES-1 is darkest. */
-    for (x = SHADES-2; x >= 0; x--)
-    {
+    for (x = SHADES-2; x >= 0; x--) {
         XSetForeground(display, static_data->gc, colors[x].pixel ^ background);
-        draw_ball( display, pixmap, 
-		   offsets[x].x_offset, offsets[x].y_offset, 
-		   offsets[x].width,    offsets[x].height);
+        draw_ball( display, pixmap,
+                   offsets[x].x_offset, offsets[x].y_offset,
+                   offsets[x].width,    offsets[x].height);
     }
 
     /* Draw a white specularity smallest and offset */
-    XSetForeground(display, static_data->gc, 
+    XSetForeground(display, static_data->gc,
                    WhitePixel(display, DefaultScreen(display)) ^ background);
     draw_ball( display, pixmap, 0.3, 0.3, 0.1, 0.1);
 
     /* Draw a little black shadow in the lower right corner */
-    XSetForeground(display, static_data->gc, 
+    XSetForeground(display, static_data->gc,
                    BlackPixel(display, DefaultScreen(display)) ^ background);
-    XDrawArc(display, pixmap, static_data->gc, 0, 0, 
-             static_data->width - 1, static_data->height - 1, 
+    XDrawArc(display, pixmap, static_data->gc, 0, 0,
+             static_data->width - 1, static_data->height - 1,
              300*64, 35*64);
 }
 
 
-/* Draw a circle outline and filling at the size and offet determined by 
+/* Draw a circle outline and filling at the size and offet determined by
    the ball's size */
 static void draw_ball( display, pixmap, x_offset, y_offset, width, height)
 Display * display;
@@ -682,11 +663,11 @@ Pixmap    pixmap;
 double    x_offset, y_offset;
 double    width, height;
 {
-    draw_circle( display, pixmap, static_data->gc,
-		 (int)(static_data->width  * x_offset), 
-		 (int)(static_data->height * y_offset), 
-		 (int)(static_data->width  * width), 
-		 (int)(static_data->height * height));
+    draw_circle(display, pixmap, static_data->gc,
+                (int)(static_data->width  * x_offset),
+                (int)(static_data->height * y_offset),
+                (int)(static_data->width  * width),
+                (int)(static_data->height * height));
 }
 
 
@@ -708,17 +689,16 @@ static void draw_black_ball( display, background)
 Display * display;
 Pixel background;
 {
-    Pixmap stipple_bitmap = 
+    Pixmap stipple_bitmap =
         XCreateBitmapFromData( display,
                                RootWindow( display, DefaultScreen( display)),
                                stipple_bits, stipple_width, stipple_height);
 
-    static_data->pixmaps[ 0] =  
-        XCreatePixmap(display, 
+    static_data->pixmaps[ 0] =
+        XCreatePixmap(display,
                       RootWindow(display, DefaultScreen(display)),
-                      static_data->width, 
-                      static_data->height,
-                      DefaultDepth( display, DefaultScreen(display)));
+                      static_data->width, static_data->height,
+                      DefaultDepth(display, DefaultScreen(display)));
 
     /* Reset all pixels in the background so they will not have
        any effect when the pixmap is xor-copied */
@@ -726,12 +706,12 @@ Pixel background;
     XFillRectangle(display, static_data->pixmaps[0], static_data->gc, 0, 0,
                    static_data->width, static_data->height);
 
-    XSetForeground(display, static_data->gc, 
+    XSetForeground(display, static_data->gc,
                    BlackPixel(display,DefaultScreen(display)) ^background);
 
     /* Draw item */
-    draw_circle( display, static_data->pixmaps[0], static_data->gc, 0, 0, 
-		 static_data->width-1, static_data->height-1);
+    draw_circle(display, static_data->pixmaps[0], static_data->gc, 0, 0,
+                static_data->width-1, static_data->height-1);
 
     /* draw a grey specularity small and offset */
     XSetStipple( display, static_data->gc, stipple_bitmap);
@@ -743,7 +723,7 @@ Pixel background;
 
 
     /* draw a white specularity smallest and offset */
-    XSetForeground(display, static_data->gc, 
+    XSetForeground(display, static_data->gc,
                    WhitePixel(display,DefaultScreen(display)) ^background);
 
     draw_ball( display, static_data->pixmaps[0], 0.3, 0.3, 0.1, 0.1);
